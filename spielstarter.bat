@@ -1,0 +1,1 @@
+java -Xmx1024M -Xms1024M -jar "L:\ME\FuerDennisGFS\121217_dennis_gfs_spiel\sopiel.jar"
