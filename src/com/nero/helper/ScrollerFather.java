@@ -5,8 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import com.nero.src.input.EnviromentallyMoved;
+import com.nero.src.input.GlobalPosition;
 
-public class ScrollerFather extends EnviromentallyMoved {
+public class ScrollerFather extends GlobalPosition {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;

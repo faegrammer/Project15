@@ -240,10 +240,10 @@ public static KeyBlau returnKeyBlau(){
 	// Update....
 	public void update(LinkedList<Block> b, LinkedList<Ghostly> e,LinkedList<Coin> co,
 			ScrollerDown sd, ScrollerLeft sl, ScrollerRight sr, ScrollerUp su) {
-		sd.update();
-		su.update();
-		sr.update();
-		sl.update();
+//		sd.update();
+//		su.update();
+//		sr.update();
+//		sl.update();
 		
 		dg.update();
 		db.update();

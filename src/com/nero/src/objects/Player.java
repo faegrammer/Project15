@@ -44,7 +44,6 @@ public class Player extends MoveablePaintable {
 	
 	// Ausmasse + woher kriegt er sein Bildchen her
 
-	private String imagePath = "/images/spielfigur/spielfigurStehen.gif";
 	public static final int playerWidth = 33;
 	public static final int playerHeight = 50;
 
