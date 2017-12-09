@@ -4,8 +4,7 @@ public class DoorPink extends DoorFather {
 
 	public DoorPink(int x, int y) {
 
-		super("/images/obstacles/Doors/Tor_pink.png",
-				"/images/obstacles/Doors/Tor_pink_geschlossen.png", x, y);
+		super(x, y, "/images/obstacles/Doors/Tor_pink_geschlossen.png", "/images/obstacles/Doors/Tor_pink.png");
 
 	}
 

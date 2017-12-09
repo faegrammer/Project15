@@ -6,20 +6,19 @@ import com.nero.src.Inworldobject;
 import com.nero.src.Visible;
 import com.nero.src.input.EnviromentallyMovedPaintable;
 
-public abstract class MoveablePaintable extends EnviromentallyMovedPaintable implements Visible,Inworldobject {
+public abstract class MoveablePaintable extends EnviromentallyMovedPaintable implements Visible, Inworldobject {
 	protected int velX;
 	protected int velY;
-	
-
 
 	public MoveablePaintable(int x, int y, int width, int height, String imagePath) {
-		super(x, y,width, height,imagePath);
-		
+		super(x, y, width, height, imagePath);
+
 	}
 
-	public MoveablePaintable(Point p,int width,int height,String imagePath) {
-		this(p.x,p.y,width,height,imagePath);
+	public MoveablePaintable(Point p, int width, int height, String imagePath) {
+		this(p.x, p.y, width, height, imagePath);
 	}
+
 	@Override
 	public void update() {
 
@@ -27,7 +26,5 @@ public abstract class MoveablePaintable extends EnviromentallyMovedPaintable imp
 		pos.x += velX;
 		pos.y += velY;
 	}
-	
-
 
 }

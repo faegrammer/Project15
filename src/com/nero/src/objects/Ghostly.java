@@ -29,7 +29,7 @@ public class Ghostly extends MoveablePaintable implements Antagonist {
 		this(x, y, enemyWidth, enemyHeight, imagePath);
 
 	}
-	
+
 	public Ghostly(int x, int y) {
 
 		this(x, y, enemyWidth, enemyHeight, imagePathToRight);
@@ -88,6 +88,12 @@ public class Ghostly extends MoveablePaintable implements Antagonist {
 			}
 
 		}
+
+	}
+
+	@Override
+	public void interact() {
+		// TODO Auto-generated method stub
 
 	}
 

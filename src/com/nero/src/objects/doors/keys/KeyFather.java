@@ -7,75 +7,36 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 import com.nero.src.input.EnviromentallyMoved;
+import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.objects.Collectable;
 
-public class KeyFather {
-	
+public class KeyFather extends EnviromentallyMovedPaintable implements Collectable {
 
-	protected String imagePath;
-	protected int width = 50;
-	protected int height = 50;
-	protected int x;
-	protected int y;
+	protected static final int keyWidth = 50;
+	protected static final int keyHeight = 50;
 	public boolean visible;
-	
-	public KeyFather(String imagePath,int x, int y){
-		
-		this.imagePath = imagePath;
-		this.x = x;
-		this.y = y;
-		
-		
+
+	public KeyFather(int x, int y, String imagePath) {
+
+		super(x, y, keyWidth, keyHeight, imagePath);
+
 	}
-	
-	
-	
-	public Rectangle getBounds(){
-		
-		return new Rectangle(this.x,this.y,this.width,this.height);
-		
+
+	public void makeVisibility() {
+
+		this.visible = true;
+
 	}
-	
-	public void makeVisibility(){
-		
-			
-			this.visible = true;
-		
-		
-	}
-	
-	public void hideKey(){
-		
+
+	public void hideKey() {
+
 		this.visible = false;
 	}
-	
-	
-	public void paint(Graphics2D g2d){
-		if(visible){
-		g2d.drawImage(getImage(),x, y ,null );}
-		
+
+	@Override
+	public void interact() {
+		// TODO Auto-generated method stub
+
 	}
-	
-	public Image getImage(){
-		
-		ImageIcon i = new ImageIcon(getClass().getResource(imagePath));
-		
-		return i.getImage();
-		
-	}
-	
-	public void update(){
-		
-		 this.x += EnviromentallyMoved.environmentVelX;
-		 this.y += EnviromentallyMoved.environmentVelY;
-			
-		}
-	
-	public void setPosition(int x, int y){
-		
-		this.x = x;
-		this.y = y;
-		
-	}
-	
 
 }

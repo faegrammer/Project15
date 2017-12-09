@@ -29,15 +29,14 @@ import com.nero.src.objects.doors.keys.KeyPink;
 import com.nero.src.objects.doors.keys.KeySilber;
 
 public class Player extends MoveablePaintable {
-// TODO
-//	// Malfunktion
-//	public void paint(Graphics2D g2d) {
-//
-//		g2d.drawImage(getImage(),pos.x,pos.y - 13, null); Warum -13?
-//
-//	}
-	
-	
+	// TODO
+	// // Malfunktion
+	// public void paint(Graphics2D g2d) {
+	//
+	// g2d.drawImage(getImage(),pos.x,pos.y - 13, null); Warum -13?
+	//
+	// }
+
 	// Ausmasse + woher kriegt er sein Bildchen her
 
 	public static final int playerWidth = 33;
@@ -87,15 +86,14 @@ public class Player extends MoveablePaintable {
 	// Jetzt wird die BlockListe eingefuegt
 
 	public Player(int x, int y) {
-		super(x, y,playerWidth,playerHeight,imagePathStehen);
+		super(x, y, playerWidth, playerHeight, imagePathStehen);
 		w = new Sound("/Sound/laufen.wav");
 		s = new Sound("/Sound/Sprung.wav");
 	}
-	
-	public Player(Point p) {
-		this(p.x,p.y);
-	}
 
+	public Player(Point p) {
+		this(p.x, p.y);
+	}
 
 	public void update(LinkedList<Block> b, LinkedList<Ghostly> e, LinkedList<Coin> co, Exit ex, ScrollerUp su,
 			ScrollerRight sr, ScrollerDown sd, ScrollerLeft sl, DoorGelb dg, DoorBlau db, DoorGruen dgr, DoorOrange dor,
@@ -422,7 +420,6 @@ public class Player extends MoveablePaintable {
 
 	}
 
-
 	// Das man sich ueberhaupt bewegen kann
 	public void keyPressed(KeyEvent e) {
 
@@ -551,8 +548,6 @@ public class Player extends MoveablePaintable {
 	}
 
 	// Hol das bild her!
-
-
 
 	public int returnPlayerX() {
 

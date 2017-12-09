@@ -8,15 +8,12 @@ import com.nero.src.Inworldobject;
 
 public abstract class EnviromentallyMoved extends GlobalPosition implements Inworldobject {
 
-	
-	
-	
 	public EnviromentallyMoved(int x, int y, int width, int height) {
-		super(x, y,width,height);
+		super(x, y, width, height);
 	}
 
-	public EnviromentallyMoved(Point p,int width, int height) {
-		super(p,width,height);
+	public EnviromentallyMoved(Point p, int width, int height) {
+		super(p, width, height);
 	}
 
 	public static int environmentVelX;
@@ -45,12 +42,11 @@ public abstract class EnviromentallyMoved extends GlobalPosition implements Inwo
 	public static void setEnvironmentVelY(int environmentVelY) {
 		EnviromentallyMoved.environmentVelY = environmentVelY;
 	}
+
 	@Override
 	public Rectangle getBounds() {
 
-		return new Rectangle(pos.x, pos.y, width,height);
+		return new Rectangle(pos.x, pos.y, width, height);
 	}
-
-
 
 }

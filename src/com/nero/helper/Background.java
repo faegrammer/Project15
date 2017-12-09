@@ -19,5 +19,4 @@ public class Background extends EnviromentallyMovedPaintable {
 		this(0, 0, 0, 0, backgroundImagePath);
 	}
 
-
 }

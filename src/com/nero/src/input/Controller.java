@@ -39,40 +39,34 @@ public class Controller {
 	public static LinkedList<BouncerToUp> btu = new LinkedList<BouncerToUp>();
 	public static LinkedList<BouncerToRight> btr = new LinkedList<BouncerToRight>();
 	public static LinkedList<BouncerToLeft> btl = new LinkedList<BouncerToLeft>();
-	
 
 	// Darf ich vorstellen.. der Spieler und desssen Startposition
 	private static Player p;
-
-	
 
 	public int tempLevel = 1;
 
 	// Und meine Ex gibt es auch hier.. ach nein.. nur der Ausgang
 	static Exit ex;
 
-	
-
 	// Alles Temporaer.. nichts von dauer.. buhuhu...
 	Block tempBlock;
 	Ghostly tempEnemy;
 	Coin tempCoin;
-	
+
 	static KeyBlau kb;
 	static KeyGelb kg;
 	static KeyGruen kgr;
 	static KeyOrange kor;
 	static KeyPink kp;
 	static KeySilber ks;
-	
+
 	static DoorBlau db;
 	static DoorGelb dg;
 	static DoorGruen dgr;
 	static DoorOrange dor;
 	static DoorPink dp;
 	static DoorSilber ds;
-	
-	
+
 	BouncerToDown tempBouncerToDown;
 	BouncerToUp tempBouncerToUp;
 	BouncerToRight tempBouncerToRight;
@@ -86,74 +80,69 @@ public class Controller {
 	public Controller() {
 
 		p = new Player(0, 0);
-		ex = new Exit(100 ,100);
+		ex = new Exit(100, 100);
 		kb = new KeyBlau(-50, -50);
-        kg = new KeyGelb(-50, -50);
-        kgr = new KeyGruen(-50, -50);
-        kor = new KeyOrange(-50, -50);
-        kp = new KeyPink(-50, -50);
-        ks = new KeySilber(-50, -50);
-        
-        db = new DoorBlau(-50, -50);
-        dg = new DoorGelb(-50, -50);
-        dgr = new DoorGruen(-50, -50);
-        dor = new DoorOrange(-50, -50);
-        dp = new DoorPink(-50, -50);
-        ds = new DoorSilber(-50, -50);
-        
+		kg = new KeyGelb(-50, -50);
+		kgr = new KeyGruen(-50, -50);
+		kor = new KeyOrange(-50, -50);
+		kp = new KeyPink(-50, -50);
+		ks = new KeySilber(-50, -50);
+
+		db = new DoorBlau(-50, -50);
+		dg = new DoorGelb(-50, -50);
+		dgr = new DoorGruen(-50, -50);
+		dor = new DoorOrange(-50, -50);
+		dp = new DoorPink(-50, -50);
+		ds = new DoorSilber(-50, -50);
+
 		// Starte Methode lvlControl
-		//lvlControl();
-		
+		// lvlControl();
+
 	}
-	
-	public static void closeTheDoors(){
+
+	public static void closeTheDoors() {
 		db.switchBack();
 		dg.switchBack();
 		dgr.switchBack();
 		dor.switchBack();
 		dp.switchBack();
 		ds.switchBack();
-		
+
 	}
 
 	public static void lvlControl() {
 		// Einfuehren von allen Objecten in Abhaengigkeit von dem Level..
 		// ...mus noch ueberarbeitet werden
-/*
-		if (Game.level == 1) {
-
-			ex.setExitPosition(exitpositionx, exitpositiony);
-			p.setPlayerPosition(50,150);
-			
-		
-
-			addBouncerToDown(new BouncerToDown(50, 50, true));
-
-			for (int i = 0; i <= Window.windowWidth; i += 50) {
-
-				addBlock(new Block(i, Window.windowHeight - 40));
-			}
-			
-			for (int i = 0; i <= Window.windowWidth; i += 50) {
-
-				addBlock(new Block(i, Window.windowHeight + 200));
-			}
-			
-			addBlock(new Block(50,200));
-			addBlock(new Block(100,150));
-			addBlock(new Block(150,-50));
-			addBlock(new Block(150,-500));
-			addBlock(new Block(150,-150));
-
-		} else if (Game.level == 2) {
-
-			ex.setExitPosition(200, 90);
-			p.setPlayerPosition(80, 50);
-
-			addBlock(new Block(80, 70));
-			addBlock(new Block(50, 70));
-
-		}*/
+		/*
+		 * if (Game.level == 1) {
+		 * 
+		 * ex.setExitPosition(exitpositionx, exitpositiony);
+		 * p.setPlayerPosition(50,150);
+		 * 
+		 * 
+		 * 
+		 * addBouncerToDown(new BouncerToDown(50, 50, true));
+		 * 
+		 * for (int i = 0; i <= Window.windowWidth; i += 50) {
+		 * 
+		 * addBlock(new Block(i, Window.windowHeight - 40)); }
+		 * 
+		 * for (int i = 0; i <= Window.windowWidth; i += 50) {
+		 * 
+		 * addBlock(new Block(i, Window.windowHeight + 200)); }
+		 * 
+		 * addBlock(new Block(50,200)); addBlock(new Block(100,150)); addBlock(new
+		 * Block(150,-50)); addBlock(new Block(150,-500)); addBlock(new
+		 * Block(150,-150));
+		 * 
+		 * } else if (Game.level == 2) {
+		 * 
+		 * ex.setExitPosition(200, 90); p.setPlayerPosition(80, 50);
+		 * 
+		 * addBlock(new Block(80, 70)); addBlock(new Block(50, 70));
+		 * 
+		 * }
+		 */
 
 	}
 
@@ -175,76 +164,87 @@ public class Controller {
 		return p;
 
 	}
-public static DoorBlau returnDoorBlau(){
-		
+
+	public static DoorBlau returnDoorBlau() {
+
 		return db;
-		
+
 	}
-	public static DoorGruen returnDoorGruen(){
-		
+
+	public static DoorGruen returnDoorGruen() {
+
 		return dgr;
-		
+
 	}
-	public static DoorOrange returnDoorOrange(){
-		
+
+	public static DoorOrange returnDoorOrange() {
+
 		return dor;
-		
+
 	}
-	public static DoorGelb returnDoorGelb(){
-		
+
+	public static DoorGelb returnDoorGelb() {
+
 		return dg;
-		
+
 	}
-	public static DoorPink returnDoorPink(){
-		
+
+	public static DoorPink returnDoorPink() {
+
 		return dp;
-		
-	}	public static DoorSilber returnDoorSilber(){
-		
+
+	}
+
+	public static DoorSilber returnDoorSilber() {
+
 		return ds;
-		
-	}	
-	
-	
-public static KeyBlau returnKeyBlau(){
-		
+
+	}
+
+	public static KeyBlau returnKeyBlau() {
+
 		return kb;
-		
+
 	}
-	public static KeyGruen returnKeyGruen(){
-		
+
+	public static KeyGruen returnKeyGruen() {
+
 		return kgr;
-		
+
 	}
-	public static KeyOrange returnKeyOrange(){
-		
+
+	public static KeyOrange returnKeyOrange() {
+
 		return kor;
-		
+
 	}
-	public static KeyGelb returnKeyGelb(){
-		
+
+	public static KeyGelb returnKeyGelb() {
+
 		return kg;
-		
+
 	}
-	public static KeyPink returnKeyPink(){
-		
+
+	public static KeyPink returnKeyPink() {
+
 		return kp;
-		
-	}	public static KeySilber returnKeySilber(){
-		
-		return ks;
-		
+
 	}
-	
+
+	public static KeySilber returnKeySilber() {
+
+		return ks;
+
+	}
 
 	// Update....
-	public void update(LinkedList<Block> b, LinkedList<Ghostly> e,LinkedList<Coin> co,
-			ScrollerDown sd, ScrollerLeft sl, ScrollerRight sr, ScrollerUp su) {
-//		sd.update();
-//		su.update();
-//		sr.update();
-//		sl.update();
-		
+	public void update(LinkedList<Block> b, LinkedList<Ghostly> e, LinkedList<Coin> co, ScrollerDown sd,
+			ScrollerLeft sl, ScrollerRight sr, ScrollerUp su) {
+		// sd.update();
+		// su.update();
+		// sr.update();
+		// sl.update();
+
 		dg.update();
 		db.update();
 		dgr.update();
@@ -257,9 +257,8 @@ public static KeyBlau returnKeyBlau(){
 		kor.update();
 		kp.update();
 		ks.update();
-		
-		p.update(b, e,Controller.co, ex, su, sr, sd, sl,dg,db,dgr,dor,dp,ds,kb,kg,kgr,kor,kp,
-				ks);
+
+		p.update(b, e, Controller.co, ex, su, sr, sd, sl, dg, db, dgr, dor, dp, ds, kb, kg, kgr, kor, kp, ks);
 		ex.update();
 
 		/*
@@ -269,8 +268,6 @@ public static KeyBlau returnKeyBlau(){
 		 * 
 		 * }
 		 */
-		
-		
 
 		for (int i = 0; i < e.size(); i++) {
 
@@ -311,25 +308,19 @@ public static KeyBlau returnKeyBlau(){
 			tempBouncerToLeft.update();
 
 		}
-		
-          for(int l = 0; l < Controller.co.size(); l++){
-			
+
+		for (int l = 0; l < Controller.co.size(); l++) {
+
 			this.tempCoin = Controller.co.get(l);
 			tempCoin.update();
-						
+
 		}
 
 	}
-	
-	
-		
-		
-		
-	
 
 	// Malt alles
 	public void paint(Graphics2D g2d) {
-		
+
 		dg.paint(g2d);
 		db.paint(g2d);
 		dgr.paint(g2d);
@@ -342,8 +333,7 @@ public static KeyBlau returnKeyBlau(){
 		kor.paint(g2d);
 		kp.paint(g2d);
 		ks.paint(g2d);
-		
-		
+
 		p.paint(g2d);
 		ex.paint(g2d);
 
@@ -353,12 +343,11 @@ public static KeyBlau returnKeyBlau(){
 			tempBlock.draw(g2d);
 
 		}
-		for(int i = 0; i < co.size(); i++){
-			
+		for (int i = 0; i < co.size(); i++) {
+
 			this.tempCoin = co.get(i);
 			tempCoin.paint(g2d);
-			
-			
+
 		}
 
 		for (int i = 0; i < e.size(); i++) {
@@ -401,17 +390,17 @@ public static KeyBlau returnKeyBlau(){
 		btd.add(b2d);
 
 	}
-	
-	public static void addCoin(Coin coi){
-		
+
+	public static void addCoin(Coin coi) {
+
 		co.add(coi);
-		
+
 	}
-	
-	public static void removeCoin(Coin coi){
-		
+
+	public static void removeCoin(Coin coi) {
+
 		co.remove(coi);
-		
+
 	}
 
 	public static void removeBouncerToDown(BouncerToDown b2d) {
@@ -502,8 +491,8 @@ public static KeyBlau returnKeyBlau(){
 	public static LinkedList<BouncerToLeft> getBtlBounds() {
 		return btl;
 	}
-	
-	public static LinkedList<Coin> getCoinBounds(){
+
+	public static LinkedList<Coin> getCoinBounds() {
 		return co;
 	}
 

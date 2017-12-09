@@ -17,7 +17,7 @@ public class BouncerFather extends EnviromentallyMoved {
 
 	public BouncerFather(int x, int y, boolean visible, Color color) {
 		// Leitet die x und y Koordinate an Global Position weiter
-		super(x, y, SIZE,SIZE);
+		super(x, y, SIZE, SIZE);
 		// Steuert das Attribut "visible"
 		this.visible = visible;
 		// Steuert das Attribut "color"

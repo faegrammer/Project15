@@ -1,5 +1,7 @@
 package com.nero.src.input;
 
-public interface Antagonist {
+import com.nero.src.objects.InteractsWithPlayer;
+
+public interface Antagonist extends InteractsWithPlayer {
 
 }

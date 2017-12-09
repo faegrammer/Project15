@@ -33,24 +33,29 @@ public class Block {
 
 		g2d.drawImage(getObstacleImage(), x, y, null);
 
-		if(Game.allessichtbar){
-		  //Kollissionsrechteck Rechts
-		  
-		  g2d.setColor(Color.YELLOW); g2d.fill(getObstacleBoundsRechts());
-		  //Kollissionsrechteck Links
-		  
-		  g2d.setColor(Color.CYAN); g2d.fill(getObstacleBoundsLinks());
-		  //Kollissionsrechteck Oben
-		 
-		  g2d.setColor(Color.GREEN); g2d.fill(getObstacleBoundsOben());
-		  //Kollissionsrechteck Unten
-		  
-		  g2d.setColor(Color.MAGENTA); g2d.fill(getObstacleBoundsUnten());
-		  
-		  //Das Gesamte Obstacle als Rechteck ausgedrueckt
-		  g2d.setColor(Color.BLACK); g2d.drawRect(x, y,
-		  this.getObstacleWidth(), this.getObstacleHeight());
-		}}
+		if (Game.allessichtbar) {
+			// Kollissionsrechteck Rechts
+
+			g2d.setColor(Color.YELLOW);
+			g2d.fill(getObstacleBoundsRechts());
+			// Kollissionsrechteck Links
+
+			g2d.setColor(Color.CYAN);
+			g2d.fill(getObstacleBoundsLinks());
+			// Kollissionsrechteck Oben
+
+			g2d.setColor(Color.GREEN);
+			g2d.fill(getObstacleBoundsOben());
+			// Kollissionsrechteck Unten
+
+			g2d.setColor(Color.MAGENTA);
+			g2d.fill(getObstacleBoundsUnten());
+
+			// Das Gesamte Obstacle als Rechteck ausgedrueckt
+			g2d.setColor(Color.BLACK);
+			g2d.drawRect(x, y, this.getObstacleWidth(), this.getObstacleHeight());
+		}
+	}
 
 	// Updatemethode....
 	public void update() {
@@ -63,32 +68,31 @@ public class Block {
 	// Alle Kollissionsdreiecke
 	public Rectangle getObstacleBoundsOben() {
 
-		return new Rectangle(this.getXCoord() + 5, this.getYCoord(),
-				this.getObstacleWidth() - 10, this.getObstacleHeight() - 30);
+		return new Rectangle(this.getXCoord() + 5, this.getYCoord(), this.getObstacleWidth() - 10,
+				this.getObstacleHeight() - 30);
 	}
 
 	public Rectangle getObstacleBoundsUnten() {
 
-		return new Rectangle(this.getXCoord() + 5, this.getYCoord() + 30,
-				this.getObstacleWidth() - 10, this.getObstacleHeight() - 30);
+		return new Rectangle(this.getXCoord() + 5, this.getYCoord() + 30, this.getObstacleWidth() - 10,
+				this.getObstacleHeight() - 30);
 	}
 
 	public Rectangle getObstacleBoundsLinks() {
 
-		return new Rectangle(this.getXCoord(), this.getYCoord() + 10,
-				this.getObstacleWidth() - 30, this.getObstacleHeight() - 20);
+		return new Rectangle(this.getXCoord(), this.getYCoord() + 10, this.getObstacleWidth() - 30,
+				this.getObstacleHeight() - 20);
 	}
 
 	public Rectangle getObstacleBoundsRechts() {
 
-		return new Rectangle(this.getXCoord() + 30, this.getYCoord() + 10,
-				this.getObstacleWidth() - 30, this.getObstacleHeight() - 20);
+		return new Rectangle(this.getXCoord() + 30, this.getYCoord() + 10, this.getObstacleWidth() - 30,
+				this.getObstacleHeight() - 20);
 	}
 
 	public Rectangle getBounds() {
 
-		return new Rectangle(this.getXCoord(), this.getYCoord(),
-				this.getObstacleWidth(), this.getObstacleHeight());
+		return new Rectangle(this.getXCoord(), this.getYCoord(), this.getObstacleWidth(), this.getObstacleHeight());
 
 	}
 
@@ -122,12 +126,11 @@ public class Block {
 		return obstacleHeight;
 
 	}
-	
-	public void setPosition(int x, int y){
+
+	public void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
-		
-		
+
 	}
 
 }

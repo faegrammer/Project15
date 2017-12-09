@@ -18,34 +18,33 @@ public class Exit extends EnviromentallyMovedPaintable {
 	// x und y wert an GlobalPosition ...
 	public Exit(int x, int y) {
 
-		super(x, y,exitWidth,exitHeight,exitImagePath);
+		super(x, y, exitWidth, exitHeight, exitImagePath);
 
 	}
 
-//	// Updaten musst du auch noch? Spaeter zum Scrollen ja.. mal schauen ob ich's
-//	// verwende
-//
-//	// Erschafft das Kollissionsviereck
-//	public Rectangle getBounds() {
-//
-//		return new Rectangle(pos.x,pos.y, exitWidth, exitHeight);
-//	}
-//
-//	// Paint Klasse um es ueberhaupt darstellen zu koennen....
-//	public void paint(Graphics2D g2d) {
-//
-//		g2d.drawImage(getImage(), pos.x,pos.y, null);
-//
-//	}
-//
-//	// Methode um das Bild zu holen
-//	public Image getImage() {
-//
-//		ImageIcon i = new ImageIcon(getClass().getResource(imagePath));
-//
-//		return i.getImage();
-//
-//	}
-
+	// // Updaten musst du auch noch? Spaeter zum Scrollen ja.. mal schauen ob ich's
+	// // verwende
+	//
+	// // Erschafft das Kollissionsviereck
+	// public Rectangle getBounds() {
+	//
+	// return new Rectangle(pos.x,pos.y, exitWidth, exitHeight);
+	// }
+	//
+	// // Paint Klasse um es ueberhaupt darstellen zu koennen....
+	// public void paint(Graphics2D g2d) {
+	//
+	// g2d.drawImage(getImage(), pos.x,pos.y, null);
+	//
+	// }
+	//
+	// // Methode um das Bild zu holen
+	// public Image getImage() {
+	//
+	// ImageIcon i = new ImageIcon(getClass().getResource(imagePath));
+	//
+	// return i.getImage();
+	//
+	// }
 
 }

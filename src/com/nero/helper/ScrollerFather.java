@@ -14,15 +14,15 @@ public class ScrollerFather extends GlobalPosition {
 	// Farbe des Bouncers
 	private Color color;
 
-	public ScrollerFather(int x, int y, boolean visible, Color color,int width,int height) {
-		
+	public ScrollerFather(int x, int y, boolean visible, Color color, int width, int height) {
+
 		// Leitet die x und y Koordinate an Global Position weiter
-		super(x, y,width,height);
+		super(x, y, width, height);
 		// Steuert das Attribut "visible"
 		this.visible = visible;
 		// Steuert das Attribut "color"
 		this.color = color;
-	
+
 	}
 
 	// Paint Klasse um es ueberhaupt darstellen zu koennen....
@@ -39,12 +39,8 @@ public class ScrollerFather extends GlobalPosition {
 	// Erschafft das Kollissionsviereck
 	public Rectangle getBounds() {
 
-		return new Rectangle(pos.x,pos.y, width,height);
+		return new Rectangle(pos.x, pos.y, width, height);
 
 	}
 
-
-
-	
-	
 }

@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 
 import com.nero.helper.Sound;
 
-
-
 public class Menue extends JPanel implements Runnable {
 
 	/**
@@ -22,7 +20,8 @@ public class Menue extends JPanel implements Runnable {
 	// Wo ist der Button auf der X-achse?
 	public int ButtonX = 50;
 
-	// So ne lustige Formel um die Breite und HICHWAREINUMLAUThe der Buttons festzulegen
+	// So ne lustige Formel um die Breite und HICHWAREINUMLAUThe der Buttons
+	// festzulegen
 	public int widthButtons = Window.windowWidth - 2 * ButtonX;
 	public int heightButtons = Window.windowHeight * 1 / 5 - 20;
 
@@ -45,15 +44,14 @@ public class Menue extends JPanel implements Runnable {
 	JButton btlevelcreator;
 	JButton btexit;
 	Sound s;
-	
+
 	Game g;
-	
 
 	public Menue(Game g) {
-		
+
 		this.g = g;
 		s = new Sound(musicPath);
-		
+
 		// Hier werden sie auch wieder eingefuegt
 		btstart = new JButton("Start");
 		bthighscore = new JButton("Highscore");
@@ -71,7 +69,7 @@ public class Menue extends JPanel implements Runnable {
 
 		add(btexit);
 
-		//System.out.println(ButtonX);
+		// System.out.println(ButtonX);
 
 		// Und hier bekommen sie auch tatsaechlich einen Nutzen
 		btstart.addActionListener(new ActionListener() {
@@ -148,14 +146,13 @@ public class Menue extends JPanel implements Runnable {
 	// Hier sind die Methoden zu den ActionListenern
 
 	private void btStartActionPerformed(ActionEvent evt) {
-             
-		
-	CardLayoutManager.cardLayout.show(CardLayoutManager.getCardContainer(),CardLayoutManager.GAME);
-    g.addKeyListener();
-    g.j.setState(Frame.ICONIFIED);
-    g.j.setState(Frame.NORMAL);
-    s.playMusic();
-	
+
+		CardLayoutManager.cardLayout.show(CardLayoutManager.getCardContainer(), CardLayoutManager.GAME);
+		g.addKeyListener();
+		g.j.setState(Frame.ICONIFIED);
+		g.j.setState(Frame.NORMAL);
+		s.playMusic();
+
 	}
 
 	private void btExitActionPerformed(ActionEvent evt) {
@@ -187,8 +184,8 @@ public class Menue extends JPanel implements Runnable {
 		running = true;
 
 	}
-	
-	//HALT STOP, jetzt macht der Thread mal pause, wenn ich aufgerufen werde
+
+	// HALT STOP, jetzt macht der Thread mal pause, wenn ich aufgerufen werde
 
 	public void stop() {
 
@@ -196,14 +193,14 @@ public class Menue extends JPanel implements Runnable {
 
 	}
 
-//Hajoo.. auch ich muss mal rennen	
+	// Hajoo.. auch ich muss mal rennen
 	@Override
 	public void run() {
 
 		while (running) {
 
 			try {
-//Alle Objekte werden in ihre grICHWAREINUMLAUTsse und an ihren Posten gebracht
+				// Alle Objekte werden in ihre grICHWAREINUMLAUTsse und an ihren Posten gebracht
 				btexit.setSize(widthButtons, heightButtons);
 				btexit.setLocation(ButtonX, exitButtonY);
 
@@ -220,7 +217,7 @@ public class Menue extends JPanel implements Runnable {
 				btstart.setLocation(ButtonX, startButtonY);
 
 				Thread.sleep(10);
-//Exceptionball! Catch a Exception
+				// Exceptionball! Catch a Exception
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
