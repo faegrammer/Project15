@@ -4,8 +4,9 @@ public class DoorGruen extends DoorFather {
 
 	public DoorGruen(int x, int y) {
 
-		super(x, y, "/images/obstacles/Doors/Tor_gruen_geschlossen.png", "/images/obstacles/Doors/Tor_gruen.png");
+		super(x, y,Identitaeten.gruen, "/images/obstacles/Doors/Tor_gruen_geschlossen.png", "/images/obstacles/Doors/Tor_gruen.png");
 
 	}
+
 
 }

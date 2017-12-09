@@ -9,16 +9,18 @@ import javax.swing.ImageIcon;
 import com.nero.src.input.EnviromentallyMoved;
 import com.nero.src.input.EnviromentallyMovedPaintable;
 import com.nero.src.objects.Collectable;
+import com.nero.src.objects.doors.Identitaeten;
 
 public class KeyFather extends EnviromentallyMovedPaintable implements Collectable {
-
+	public final Identitaeten keyIdent;
 	protected static final int keyWidth = 50;
 	protected static final int keyHeight = 50;
 	public boolean visible;
 
-	public KeyFather(int x, int y, String imagePath) {
+	public KeyFather(int x, int y,Identitaeten keyIdent, String imagePath) {
 
 		super(x, y, keyWidth, keyHeight, imagePath);
+		this.keyIdent = keyIdent;
 
 	}
 

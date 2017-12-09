@@ -48,6 +48,7 @@ public class Player extends MoveablePaintable {
 	private int sprunkonstante = 15;
 	private int springer = sprunkonstante;
 	private boolean allowSpace = true;
+	public static boolean darfRechts, darfLinks = true;
 
 	public static boolean SchluesselBlau = false;
 	public static boolean SchluesselGelb = false;
@@ -210,14 +211,13 @@ public class Player extends MoveablePaintable {
 
 			if (getBounds().intersects(e.get(i).getBounds())) {
 				Game.Score = 0;
-				i = e.size();
 				Controller.removeAllExceptNotList();
 				InternerLvLcreator.internerLvlControl();
-
+				break;
 			}
 
 		}
-		// Wenn Exit getroffen erhICHWAREINUMLAUThe den Level
+		// Wenn Exit getroffen erhöhe den Level
 		if (getBounds().intersects(ex.getBounds())) {
 
 			++Game.level;

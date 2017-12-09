@@ -9,30 +9,33 @@ import javax.swing.ImageIcon;
 
 import com.nero.src.input.EnviromentallyMoved;
 import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.objects.InteractsWithPlayer;
 
-public class DoorFather extends EnviromentallyMovedPaintable {
+public abstract class DoorFather extends EnviromentallyMovedPaintable implements InteractsWithPlayer {
 
 	public static final int doorWidth = 50;
 	public static final int doorHeight = 50;
+	public final Identitaeten identity;
 	private final String imageOpen, imageClosed;
 
-	public DoorFather(Point p, int width, int height, String imagePathClosed, String imagePathOpen) {
-		this(p.x, p.y, width, height, imagePathClosed, imagePathOpen);
+	public DoorFather(Point p, int width, int height,Identitaeten identity, String imagePathClosed, String imagePathOpen) {
+		this(p.x, p.y, width, height,identity, imagePathClosed, imagePathOpen);
 	}
 
-	public DoorFather(Point p, String imagePathClosed, String imagePathOpen) {
-		this(p, doorWidth, doorHeight, imagePathClosed, imagePathOpen);
+	public DoorFather(Point p,Identitaeten identity, String imagePathClosed, String imagePathOpen) {
+		this(p, doorWidth, doorHeight,identity, imagePathClosed, imagePathOpen);
 	}
 
-	public DoorFather(int x, int y, String imagePathClosed, String imagePathOpen) {
+	public DoorFather(int x, int y,Identitaeten identity, String imagePathClosed, String imagePathOpen) {
 
-		this(x, y, doorWidth, doorHeight, imagePathClosed, imagePathOpen);
+		this(x, y, doorWidth, doorHeight,identity, imagePathClosed, imagePathOpen);
 	}
 
-	public DoorFather(int x, int y, int width, int height, String imagePathClosed, String imagePathOpen) {
+	public DoorFather(int x, int y, int width, int height,Identitaeten identity, String imagePathClosed, String imagePathOpen) {
 		super(x, y, width, height, imagePathClosed);
 		this.imageClosed = imagePathClosed;
 		this.imageOpen = imagePathOpen;
+		this.identity = identity; 
 	}
 
 	public void switchPictures() {
@@ -64,6 +67,10 @@ public class DoorFather extends EnviromentallyMovedPaintable {
 	public Rectangle getDoorBoundsRechts() {
 
 		return new Rectangle(pos.x + 30, pos.y + 10, width - 30, height - 20);
+	}
+	@Override
+	public void interact() {
+		
 	}
 
 }
