@@ -2,15 +2,21 @@
 package com.nero.src.input;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
-public class EnviromentallyMoved extends GlobalPosition {
+import com.nero.src.Inworldobject;
 
-	public EnviromentallyMoved(int x, int y) {
-		super(x, y);
+public abstract class EnviromentallyMoved extends GlobalPosition implements Inworldobject {
+
+	
+	
+	
+	public EnviromentallyMoved(int x, int y, int width, int height) {
+		super(x, y,width,height);
 	}
 
-	public EnviromentallyMoved(Point p) {
-		super(p);
+	public EnviromentallyMoved(Point p,int width, int height) {
+		super(p,width,height);
 	}
 
 	public static int environmentVelX;
@@ -38,5 +44,12 @@ public class EnviromentallyMoved extends GlobalPosition {
 	public static void setEnvironmentVelY(int environmentVelY) {
 		EnviromentallyMoved.environmentVelY = environmentVelY;
 	}
+	@Override
+	public Rectangle getBounds() {
+
+		return new Rectangle(pos.x, pos.y, width,height);
+	}
+
+
 
 }

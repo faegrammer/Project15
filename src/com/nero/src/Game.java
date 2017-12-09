@@ -22,7 +22,7 @@ import com.nero.src.input.InternerLvLcreator;
 import com.nero.src.input.KeyboardInput;
 import com.nero.src.objects.Block;
 import com.nero.src.objects.Coin;
-import com.nero.src.objects.Enemy;
+import com.nero.src.objects.Ghostly;
 import com.nero.src.objects.Player;
 
 
@@ -81,7 +81,7 @@ public class Game extends JPanel implements Runnable {
 	private LinkedList<Block> b;
 
 	// Hier kommen die allseits (un-)beliebten Gegner her
-	private LinkedList<Enemy> e;
+	private LinkedList<Ghostly> e;
 	
 	private LinkedList<Coin> co;
 	

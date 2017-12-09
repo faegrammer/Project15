@@ -32,18 +32,23 @@ import com.nero.src.objects.doors.keys.KeyOrange;
 import com.nero.src.objects.doors.keys.KeyPink;
 import com.nero.src.objects.doors.keys.KeySilber;
 
-public class Player extends Moveable {
-
+public class Player extends MoveablePaintable {
+// TODO
+//	// Malfunktion
+//	public void paint(Graphics2D g2d) {
+//
+//		g2d.drawImage(getImage(),pos.x,pos.y - 13, null); Warum -13?
+//
+//	}
+	
+	
 	// Ausmasse + woher kriegt er sein Bildchen her
 
 	private String imagePath = "/images/spielfigur/spielfigurStehen.gif";
-	private int widthPlayer = 33;
-	private int heightPlayer = 50;
+	public static final int playerWidth = 33;
+	public static final int playerHeight = 50;
 
 	// Attribute wie schnell der Typ ist
-
-	int velX;
-	int velY;
 	private int bewegungsgeschwindigkeit = 5;
 	private int sprungkraft = 0;
 	private int sprunkonstante = 15;
@@ -56,9 +61,6 @@ public class Player extends Moveable {
 	public static boolean SchluesselOrange = false;
 	public static boolean SchluesselPink = false;
 	public static boolean SchluesselSilber = false;
-
-	// private int x;
-	// private int y;
 
 	private int maxFallingSpeed = 6;
 
@@ -77,25 +79,30 @@ public class Player extends Moveable {
 
 	// private String springenLinksBild
 	// ="/images/spielfigur/spielfigurSchuss.gif";
-	private String fallenLinksBild = "/images/spielfigur/Spieler_links_springen.png";
-	private String stehenLinksBild = "/images/spielfigur/Spielerlinks.png";
-	private String laufenRechtsBild = "/images/spielfigur/Spieler_rechts_laufen_animiert.gif";
+	private final static String imagePathStehen = "/images/spielfigur/spielfigurStehen.gif";
+	private final static String fallenLinksBild = "/images/spielfigur/Spieler_links_springen.png";
+	private final static String stehenLinksBild = "/images/spielfigur/Spielerlinks.png";
+	private final static String laufenRechtsBild = "/images/spielfigur/Spieler_rechts_laufen_animiert.gif";
 
 	// private String springenRechtsBild=springenLinksBild;
-	private String fallenRechtsBild = "/images/spielfigur/Spieler_rechts_springen.png";
-	private String stehenRechtsBild = "/images/spielfigur/Spielerrechts.png";
-	private String laufenLinksBild = "/images/spielfigur/Spieler_links_laufen_animiert.gif";
+	private final static String fallenRechtsBild = "/images/spielfigur/Spieler_rechts_springen.png";
+	private final static String stehenRechtsBild = "/images/spielfigur/Spielerrechts.png";
+	private final static String laufenLinksBild = "/images/spielfigur/Spieler_links_laufen_animiert.gif";
 
 	// Jetzt wird die BlockListe eingefuegt
 
 	public Player(int x, int y) {
-		super(x, y);
+		super(x, y,playerWidth,playerHeight,imagePathStehen);
 		w = new Sound("/Sound/laufen.wav");
 		s = new Sound("/Sound/Sprung.wav");
 	}
+	
+	public Player(Point p) {
+		this(p.x,p.y);
+	}
 
 
-	public void update(LinkedList<Block> b, LinkedList<Enemy> e, LinkedList<Coin> co, Exit ex, ScrollerUp su,
+	public void update(LinkedList<Block> b, LinkedList<Ghostly> e, LinkedList<Coin> co, Exit ex, ScrollerUp su,
 			ScrollerRight sr, ScrollerDown sd, ScrollerLeft sl, DoorGelb dg, DoorBlau db, DoorGruen dgr, DoorOrange dor,
 			DoorPink dp, DoorSilber ds, KeyBlau kb, KeyGelb kg, KeyGruen kgr, KeyOrange kor, KeyPink kp, KeySilber ks) {
 
@@ -138,14 +145,14 @@ public class Player extends Moveable {
 
 	// Kollissionfunktion mit Gegner ,BlICHWAREINUMLAUTcken und Exit und was dann
 	// passiert
-	public void Collission(LinkedList<Block> b, LinkedList<Enemy> e, Exit ex, ScrollerUp su, ScrollerRight sr,
+	public void Collission(LinkedList<Block> b, LinkedList<Ghostly> e, Exit ex, ScrollerUp su, ScrollerRight sr,
 			ScrollerDown sd, ScrollerLeft sl, LinkedList<Coin> co, DoorGelb dg, DoorBlau db, DoorGruen dgr,
 			DoorOrange dor, DoorPink dp, DoorSilber ds, KeyBlau kb, KeyGelb kg, KeyGruen kgr, KeyOrange kor, KeyPink kp,
 			KeySilber ks) {
 
 		for (int i = 0; i < co.size(); i++) {
 
-			if (playerGetBounds().intersects(co.get(i).getCoinBounds())) {
+			if (getBounds().intersects(co.get(i).getCoinBounds())) {
 
 				Controller.removeCoin(co.get(i));
 				i = co.size();
@@ -159,7 +166,7 @@ public class Player extends Moveable {
 
 		for (int i = 0; i < b.size(); i++) {
 
-			if (playerGetBounds().intersects(b.get(i).getObstacleBoundsOben())) {
+			if (getBounds().intersects(b.get(i).getObstacleBoundsOben())) {
 
 				i = b.size();
 				falling = false;
@@ -179,7 +186,7 @@ public class Player extends Moveable {
 
 		for (int i = 0; i < b.size(); i++) {
 
-			if (playerGetBounds().intersects(b.get(i).getObstacleBoundsUnten())) {
+			if (getBounds().intersects(b.get(i).getObstacleBoundsUnten())) {
 
 				i = b.size();
 				falling = true;
@@ -193,11 +200,11 @@ public class Player extends Moveable {
 
 		for (int i = 0; i < b.size(); i++) {
 
-			if (playerGetBounds().intersects(b.get(i).getObstacleBoundsRechts())) {
+			if (getBounds().intersects(b.get(i).getObstacleBoundsRechts())) {
 
 				pos.x += bewegungsgeschwindigkeit;
 
-			} else if (playerGetBounds().intersects(b.get(i).getObstacleBoundsLinks())) {
+			} else if (getBounds().intersects(b.get(i).getObstacleBoundsLinks())) {
 
 				pos.x -= bewegungsgeschwindigkeit;
 
@@ -208,7 +215,7 @@ public class Player extends Moveable {
 		// Wenn ich getroffen wered, kill das spiel
 		for (int i = 0; i < e.size(); i++) {
 
-			if (playerGetBounds().intersects(e.get(i).getEnemyBounds())) {
+			if (getBounds().intersects(e.get(i).getBounds())) {
 				Game.Score = 0;
 				i = e.size();
 				Controller.removeAllExceptNotList();
@@ -218,7 +225,7 @@ public class Player extends Moveable {
 
 		}
 		// Wenn Exit getroffen erhICHWAREINUMLAUThe den Level
-		if (playerGetBounds().intersects(ex.getExitBounds())) {
+		if (getBounds().intersects(ex.getBounds())) {
 
 			++Game.level;
 			Controller.removeAllExceptNotList();
@@ -226,21 +233,21 @@ public class Player extends Moveable {
 
 		}
 
-		if (!playerGetBounds().intersects(sd.getBounds()) ^ !playerGetBounds().intersects(su.getBounds())) {
+		if (!getBounds().intersects(sd.getBounds()) ^ !getBounds().intersects(su.getBounds())) {
 
 			EnviromentallyMoved.environmentVelY = 0;
 			springer = sprunkonstante;
 			allowSpace = true;
 
 		}
-		if (!playerGetBounds().intersects(su.getBounds())) {
+		if (!getBounds().intersects(su.getBounds())) {
 
 			EnviromentallyMoved.environmentVelY = 0;
 			springer = sprunkonstante;
 			allowSpace = true;
 		}
 
-		if (playerGetBounds().intersects(su.getBounds())) {
+		if (getBounds().intersects(su.getBounds())) {
 
 			allowSpace = false;
 
@@ -252,7 +259,7 @@ public class Player extends Moveable {
 
 		}
 
-		if (playerGetBounds().intersects(sd.getBounds())) {
+		if (getBounds().intersects(sd.getBounds())) {
 
 			if (falling) {
 
@@ -263,12 +270,12 @@ public class Player extends Moveable {
 
 		}
 
-		if (!playerGetBounds().intersects(sl.getBounds()) && !playerGetBounds().intersects(sr.getBounds())) {
+		if (!getBounds().intersects(sl.getBounds()) && !getBounds().intersects(sr.getBounds())) {
 			EnviromentallyMoved.environmentVelX = 0;
 
 		}
 
-		if (playerGetBounds().intersects(sr.getBounds())) {
+		if (getBounds().intersects(sr.getBounds())) {
 
 			EnviromentallyMoved.environmentVelX = -bewegungsgeschwindigkeit;
 
@@ -276,7 +283,7 @@ public class Player extends Moveable {
 
 		}
 
-		if (playerGetBounds().intersects(sl.getBounds())) {
+		if (getBounds().intersects(sl.getBounds())) {
 
 			EnviromentallyMoved.environmentVelX = bewegungsgeschwindigkeit;
 
@@ -286,17 +293,17 @@ public class Player extends Moveable {
 
 		// ----------------------
 		if (!SchluesselBlau) {
-			if (playerGetBounds().intersects(db.getDoorBoundsRechts())) {
+			if (getBounds().intersects(db.getDoorBoundsRechts())) {
 
 				pos.x += bewegungsgeschwindigkeit;
 				System.out.println("Collission");
-			} else if (playerGetBounds().intersects(db.getDoorBoundsLinks())) {
+			} else if (getBounds().intersects(db.getDoorBoundsLinks())) {
 
 				pos.x -= bewegungsgeschwindigkeit;
 
 			}
 		} else if (SchluesselBlau) {
-			if (playerGetBounds().intersects(db.getDoorBoundsRechts())) {
+			if (getBounds().intersects(db.getDoorBoundsRechts())) {
 				Controller.returnDoorBlau().switchPictures();
 			}
 		}
@@ -304,128 +311,122 @@ public class Player extends Moveable {
 		// ----------------------
 		// ----------------------
 		if (!SchluesselGelb) {
-			if (playerGetBounds().intersects(dg.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dg.getDoorBoundsRechts())) {
 
 				pos.x += bewegungsgeschwindigkeit;
 
-			} else if (playerGetBounds().intersects(dg.getDoorBoundsLinks())) {
+			} else if (getBounds().intersects(dg.getDoorBoundsLinks())) {
 
 				pos.x -= bewegungsgeschwindigkeit;
 
 			}
 		} else if (SchluesselGelb) {
-			if (playerGetBounds().intersects(dg.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dg.getDoorBoundsRechts())) {
 				Controller.returnDoorGelb().switchPictures();
 			}
 		}
 
 		// ----------------------//----------------------
 		if (!SchluesselGruen) {
-			if (playerGetBounds().intersects(dgr.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dgr.getDoorBoundsRechts())) {
 
 				pos.x += bewegungsgeschwindigkeit;
 
-			} else if (playerGetBounds().intersects(dgr.getDoorBoundsLinks())) {
+			} else if (getBounds().intersects(dgr.getDoorBoundsLinks())) {
 
 				pos.x -= bewegungsgeschwindigkeit;
 
 			}
 		} else if (SchluesselGruen) {
-			if (playerGetBounds().intersects(dgr.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dgr.getDoorBoundsRechts())) {
 				Controller.returnDoorGruen().switchPictures();
 			}
 		}
 
 		// ----------------------//----------------------
 		if (!SchluesselOrange) {
-			if (playerGetBounds().intersects(dor.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dor.getDoorBoundsRechts())) {
 
 				pos.x += bewegungsgeschwindigkeit;
 
-			} else if (playerGetBounds().intersects(dor.getDoorBoundsLinks())) {
+			} else if (getBounds().intersects(dor.getDoorBoundsLinks())) {
 
 				pos.x -= bewegungsgeschwindigkeit;
 
 			}
 		} else if (SchluesselOrange) {
-			if (playerGetBounds().intersects(dor.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dor.getDoorBoundsRechts())) {
 				Controller.returnDoorOrange().switchPictures();
 			}
 		}
 
 		// ----------------------//----------------------
 		if (!SchluesselPink) {
-			if (playerGetBounds().intersects(dp.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dp.getDoorBoundsRechts())) {
 
 				pos.x += bewegungsgeschwindigkeit;
 
-			} else if (playerGetBounds().intersects(dp.getDoorBoundsLinks())) {
+			} else if (getBounds().intersects(dp.getDoorBoundsLinks())) {
 
 				pos.x -= bewegungsgeschwindigkeit;
 
 			}
 		} else if (SchluesselPink) {
-			if (playerGetBounds().intersects(dp.getDoorBoundsRechts())) {
+			if (getBounds().intersects(dp.getDoorBoundsRechts())) {
 				Controller.returnDoorPink().switchPictures();
 			}
 		}
 
 		// ----------------------//----------------------
 		if (!SchluesselSilber) {
-			if (playerGetBounds().intersects(ds.getDoorBoundsRechts())) {
+			if (getBounds().intersects(ds.getDoorBoundsRechts())) {
 
 				pos.x += bewegungsgeschwindigkeit;
 
-			} else if (playerGetBounds().intersects(ds.getDoorBoundsLinks())) {
+			} else if (getBounds().intersects(ds.getDoorBoundsLinks())) {
 
 				pos.x -= bewegungsgeschwindigkeit;
 
 			}
 		} else if (SchluesselSilber) {
-			if (playerGetBounds().intersects(ds.getDoorBoundsRechts())) {
+			if (getBounds().intersects(ds.getDoorBoundsRechts())) {
 				Controller.returnDoorSilber().switchPictures();
 			}
 		}
 
 		// ----------------------
-		if (playerGetBounds().intersects(kb.getBounds())) {
+		if (getBounds().intersects(kb.getBounds())) {
 			SchluesselBlau = true;
 			Controller.returnKeyBlau().hideKey();
 		}
-		if (playerGetBounds().intersects(kg.getBounds())) {
+		if (getBounds().intersects(kg.getBounds())) {
 
 			SchluesselGelb = true;
 			Controller.returnKeyGelb().hideKey();
 		}
 
-		if (playerGetBounds().intersects(kgr.getBounds())) {
+		if (getBounds().intersects(kgr.getBounds())) {
 			SchluesselGruen = true;
 			Controller.returnKeyGruen().hideKey();
 		}
 
-		if (playerGetBounds().intersects(kor.getBounds())) {
+		if (getBounds().intersects(kor.getBounds())) {
 			SchluesselOrange = true;
 			Controller.returnKeyOrange().hideKey();
 		}
 
-		if (playerGetBounds().intersects(kp.getBounds())) {
+		if (getBounds().intersects(kp.getBounds())) {
 			SchluesselPink = true;
 			Controller.returnKeyPink().hideKey();
 		}
 
-		if (playerGetBounds().intersects(ks.getBounds())) {
+		if (getBounds().intersects(ks.getBounds())) {
 			SchluesselSilber = true;
 			Controller.returnKeySilber().hideKey();
 		}
 
 	}
 
-	// Malfunktion
-	public void paint(Graphics2D g2d) {
-
-		g2d.drawImage(getPlayerImage(),pos.x,pos.y - 13, null);
-
-	}
 
 	// Das man sich ueberhaupt bewegen kann
 	public void keyPressed(KeyEvent e) {
@@ -548,19 +549,14 @@ public class Player extends Moveable {
 	}
 
 	// Kollissionsviereck
-	public Rectangle playerGetBounds() {
+	public Rectangle getBounds() {
 
-		return new Rectangle(pos.x, pos.y, widthPlayer, heightPlayer + 1);
+		return new Rectangle(pos.x, pos.y, playerWidth, playerHeight + 1);
 	}
 
 	// Hol das bild her!
 
-	public Image getPlayerImage() {
 
-		ImageIcon i = new ImageIcon(getClass().getResource(imagePath));
-
-		return i.getImage();
-	}
 
 	public int returnPlayerX() {
 

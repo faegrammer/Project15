@@ -11,7 +11,7 @@ import com.nero.src.Game;
 import com.nero.src.Window;
 import com.nero.src.objects.Block;
 import com.nero.src.objects.Coin;
-import com.nero.src.objects.Enemy;
+import com.nero.src.objects.Ghostly;
 
 
 public class InternerLvLcreator {
@@ -358,31 +358,27 @@ try{
 
 				else if (s.equals("+")) {
 
-					Controller.addEnemy(new Enemy(i * 50 - oldX, k * 50 - oldY,
-							true));
+					Controller.addEnemy(new Ghostly(i * 50 - oldX, k * 50 - oldY));
 					Controller.addBouncerToRight(new BouncerToRight(i * 50
 							- oldX + 40, k * 50 - oldY + 10,
 							globaleSichtbarkeit));
 
 				} else if (s.equals("e")) {
 
-					Controller.addEnemy(new Enemy(i * 50 - oldX, k * 50 - oldY,
-							false));
+					Controller.addEnemy(new Ghostly(i * 50 - oldX, k * 50 - oldY));
 					Controller.addBouncerToLeft(new BouncerToLeft(
 							i * 50 - oldX, k * 50 - oldY + 10,
 							globaleSichtbarkeit));
 
 				} else if (s.equals("-")) {
 
-					Controller.addEnemy(new Enemy(i * 50 - oldX, k * 50 - oldY,
-							false));
+					Controller.addEnemy(new Ghostly(i * 50 - oldX, k * 50 - oldY));
 					Controller.addBouncerToUp(new BouncerToUp(i * 50 - oldX
 							+ 10, k * 50 - oldY, globaleSichtbarkeit));
 
 				} else if (s.equals("&")) {
 
-					Controller.addEnemy(new Enemy(i * 50 - oldX, k * 50 - oldY,
-							false));
+					Controller.addEnemy(new Ghostly(i * 50 - oldX, k * 50 - oldY));
 					Controller.addBouncerToDown(new BouncerToDown(i * 50 - oldX
 							+ 10, k * 50 - oldY + 40, globaleSichtbarkeit));
 
@@ -394,8 +390,7 @@ try{
 
 				} else if (s.equals("?")) {
 
-					Controller.addEnemy(new Enemy(i * 50 - oldX, k * 50 - oldY,
-							false));
+					Controller.addEnemy(new Ghostly(i * 50 - oldX, k * 50 - oldY));
 					;
 				}
 

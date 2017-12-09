@@ -14,7 +14,7 @@ import com.nero.helper.ScrollerRight;
 import com.nero.helper.ScrollerUp;
 import com.nero.src.objects.Block;
 import com.nero.src.objects.Coin;
-import com.nero.src.objects.Enemy;
+import com.nero.src.objects.Ghostly;
 import com.nero.src.objects.Player;
 import com.nero.src.objects.doors.DoorBlau;
 import com.nero.src.objects.doors.DoorGelb;
@@ -33,7 +33,7 @@ public class Controller {
 
 	// Hier kommen die Listen..
 	public static LinkedList<Block> b = new LinkedList<Block>();
-	public static LinkedList<Enemy> e = new LinkedList<Enemy>();
+	public static LinkedList<Ghostly> e = new LinkedList<Ghostly>();
 	public static LinkedList<Coin> co = new LinkedList<Coin>();
 	public static LinkedList<BouncerToDown> btd = new LinkedList<BouncerToDown>();
 	public static LinkedList<BouncerToUp> btu = new LinkedList<BouncerToUp>();
@@ -55,7 +55,7 @@ public class Controller {
 
 	// Alles Temporaer.. nichts von dauer.. buhuhu...
 	Block tempBlock;
-	Enemy tempEnemy;
+	Ghostly tempEnemy;
 	Coin tempCoin;
 	
 	static KeyBlau kb;
@@ -238,7 +238,7 @@ public static KeyBlau returnKeyBlau(){
 	
 
 	// Update....
-	public void update(LinkedList<Block> b, LinkedList<Enemy> e,LinkedList<Coin> co,
+	public void update(LinkedList<Block> b, LinkedList<Ghostly> e,LinkedList<Coin> co,
 			ScrollerDown sd, ScrollerLeft sl, ScrollerRight sr, ScrollerUp su) {
 		sd.update();
 		su.update();
@@ -471,19 +471,19 @@ public static KeyBlau returnKeyBlau(){
 		return b;
 	}
 
-	public static void addEnemy(Enemy enemy) {
+	public static void addEnemy(Ghostly enemy) {
 
 		e.add(enemy);
 
 	}
 
-	public static void removeEnemy(Enemy enemy) {
+	public static void removeEnemy(Ghostly enemy) {
 
 		e.remove(enemy);
 
 	}
 
-	public static LinkedList<Enemy> getEnemyBounds() {
+	public static LinkedList<Ghostly> getEnemyBounds() {
 		return e;
 	}
 

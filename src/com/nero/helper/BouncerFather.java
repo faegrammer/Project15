@@ -12,13 +12,14 @@ public class BouncerFather extends EnviromentallyMoved {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;
+	private static final int SIZE = 10;
 
 	// Farbe des Bouncers
 	private Color color;
 
 	public BouncerFather(int x, int y, boolean visible, Color color) {
 		// Leitet die x und y Koordinate an Global Position weiter
-		super(x, y);
+		super(x, y, SIZE,SIZE);
 		// Steuert das Attribut "visible"
 		this.visible = visible;
 		// Steuert das Attribut "color"
@@ -36,15 +37,5 @@ public class BouncerFather extends EnviromentallyMoved {
 		}
 
 	}
-
-	// Erschafft das Kollissionsviereck
-	public Rectangle getBounds() {
-
-		return new Rectangle(pos.x, pos.y, 10, 10);
-
-	}
-
-	
-
 
 }

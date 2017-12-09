@@ -10,8 +10,6 @@ public class ScrollerFather extends EnviromentallyMoved {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;
-	private int width;
-	private int height;
 
 	// Farbe des Bouncers
 	private Color color;
@@ -19,14 +17,12 @@ public class ScrollerFather extends EnviromentallyMoved {
 	public ScrollerFather(int x, int y, boolean visible, Color color,int width,int height) {
 		
 		// Leitet die x und y Koordinate an Global Position weiter
-		super(x, y);
+		super(x, y,width,height);
 		// Steuert das Attribut "visible"
 		this.visible = visible;
 		// Steuert das Attribut "color"
 		this.color = color;
-		this.width = width;
-		this.height = height;
-
+	
 	}
 
 	// Paint Klasse um es ueberhaupt darstellen zu koennen....
@@ -47,34 +43,7 @@ public class ScrollerFather extends EnviromentallyMoved {
 
 	}
 
-	// Updaten musst du auch noch? Spaeter zum Scrollen ja.. mal schauen ob ich's
-	// verwende
-	public void update() {
 
-		//x += -GlobalPosition.environmentVelX;
-		//y += -GlobalPosition.environmentVelY;
-
-	}
-	
-	public int returnScrollerX(){
-		
-		return pos.x;
-		
-	}
-	
-   public int returnScrollerY(){
-		
-		return pos.y;
-		
-	}
-	
-	
-	public void setPosition(int x, int y){
-		pos.x = x;
-		pos.y = y;
-		
-		
-	}
 
 	
 	

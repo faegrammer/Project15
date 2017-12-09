@@ -2,24 +2,25 @@ package com.nero.src.input;
 
 import java.awt.Point;
 
-public class GlobalPosition {
+public abstract class GlobalPosition {
 	protected Point pos;
+	protected int width;
+	protected int height;
+	
 
-	public GlobalPosition(int x, int y) {
+	public GlobalPosition(int x, int y, int width, int height) {
 
-		this(new Point(x, y));
+		this(new Point(x, y),width,height);
 
 	}
 
-	public GlobalPosition(Point p) {
+	public GlobalPosition(Point p,int width, int height) {
 		pos = new Point(p.x, p.y);
+		this.width = width;
+		this.height = height;
 	}
 	
-	public void setPosition(int x, int y) {
-		setPos(new Point(x, y));
 
-	}
-	
 	public Point getPos() {
 		return pos;
 	}
