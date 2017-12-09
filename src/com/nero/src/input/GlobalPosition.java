@@ -1,23 +1,34 @@
-
 package com.nero.src.input;
 
+import java.awt.Point;
+
 public class GlobalPosition {
-
-	public int x;
-	public int y;
-	public static int environmentVelX;
-	public static int environmentVelY;
-
-	/*
-	 * Fuer die Faulen, die nie unendlich oft die X und Y Attribute machen wollen
-	 * ist das ne gute alternative
-	 */
+	protected Point pos;
 
 	public GlobalPosition(int x, int y) {
 
-		this.x = x;
-		this.y = y;
+		this(new Point(x, y));
 
 	}
 
+	public GlobalPosition(Point p) {
+		pos = new Point(p.x, p.y);
+	}
+	
+	public void setPosition(int x, int y) {
+		setPos(new Point(x, y));
+
+	}
+	
+	public Point getPos() {
+		return pos;
+	}
+
+	public void setPos(Point pos) {
+		this.pos = pos;
+	}
+	
+	public void setPos(int x, int y) {
+		this.pos = new Point(x,y);
+	}
 }

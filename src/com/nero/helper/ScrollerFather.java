@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import com.nero.src.input.GlobalPosition;
+import com.nero.src.input.EnviromentallyMoved;
 
-public class ScrollerFather extends GlobalPosition {
+public class ScrollerFather extends EnviromentallyMoved {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;
@@ -43,7 +43,7 @@ public class ScrollerFather extends GlobalPosition {
 	// Erschafft das Kollissionsviereck
 	public Rectangle getBounds() {
 
-		return new Rectangle(x, y, width,height);
+		return new Rectangle(pos.x,pos.y, width,height);
 
 	}
 
@@ -58,20 +58,20 @@ public class ScrollerFather extends GlobalPosition {
 	
 	public int returnScrollerX(){
 		
-		return this.x;
+		return pos.x;
 		
 	}
 	
    public int returnScrollerY(){
 		
-		return this.y;
+		return pos.y;
 		
 	}
 	
 	
 	public void setPosition(int x, int y){
-		this.x = x;
-		this.y = y;
+		pos.x = x;
+		pos.y = y;
 		
 		
 	}

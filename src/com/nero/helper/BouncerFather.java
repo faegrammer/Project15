@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import com.nero.src.input.GlobalPosition;
+import com.nero.src.input.EnviromentallyMoved;
 
 //Erklaerung Bouncer: Objekt um Gegner leicht einen Bewegungsbefehl zu geben
 
-public class BouncerFather extends GlobalPosition {
+public class BouncerFather extends EnviromentallyMoved {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;
@@ -40,24 +40,11 @@ public class BouncerFather extends GlobalPosition {
 	// Erschafft das Kollissionsviereck
 	public Rectangle getBounds() {
 
-		return new Rectangle(x, y, 10, 10);
+		return new Rectangle(pos.x, pos.y, 10, 10);
 
 	}
 
-	// Updaten musst du auch noch? Spaeter zum Scrollen ja.. mal schauen ob ich's
-	// verwende
-	public void update() {
-
-		x += GlobalPosition.environmentVelX;
-		y += GlobalPosition.environmentVelY;
-
-	}
 	
-	public void setPosition(int x, int y){
-		this.x = x;
-		this.y = y;
-		
-		
-	}
+
 
 }

@@ -2,6 +2,7 @@ package com.nero.src.objects;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
@@ -16,7 +17,7 @@ import com.nero.helper.ScrollerUp;
 import com.nero.helper.Sound;
 import com.nero.src.Game;
 import com.nero.src.input.Controller;
-import com.nero.src.input.GlobalPosition;
+import com.nero.src.input.EnviromentallyMoved;
 import com.nero.src.input.InternerLvLcreator;
 import com.nero.src.objects.doors.DoorBlau;
 import com.nero.src.objects.doors.DoorGelb;
@@ -31,7 +32,7 @@ import com.nero.src.objects.doors.keys.KeyOrange;
 import com.nero.src.objects.doors.keys.KeyPink;
 import com.nero.src.objects.doors.keys.KeySilber;
 
-public class Player {
+public class Player extends Moveable {
 
 	// Ausmasse + woher kriegt er sein Bildchen her
 
@@ -48,18 +49,16 @@ public class Player {
 	private int sprunkonstante = 15;
 	private int springer = sprunkonstante;
 	private boolean allowSpace = true;
-	
+
 	public static boolean SchluesselBlau = false;
 	public static boolean SchluesselGelb = false;
-	public static boolean SchluesselGruen= false;
+	public static boolean SchluesselGruen = false;
 	public static boolean SchluesselOrange = false;
 	public static boolean SchluesselPink = false;
-	public static boolean SchluesselSilber= false;
-	
-	
+	public static boolean SchluesselSilber = false;
 
-	private int x;
-	private int y;
+	// private int x;
+	// private int y;
 
 	private int maxFallingSpeed = 6;
 
@@ -90,34 +89,22 @@ public class Player {
 	// Jetzt wird die BlockListe eingefuegt
 
 	public Player(int x, int y) {
-		this.x = x;
-		this.y = y;
+		super(x, y);
 		w = new Sound("/Sound/laufen.wav");
 		s = new Sound("/Sound/Sprung.wav");
 	}
 
-	// Hier kann ich den Spieler beliebig verschieben
 
-	public void setPlayerPosition(int x, int y) {
-		this.x = x;
-		this.y = y;
-
-	}
-
-	public void update(LinkedList<Block> b, LinkedList<Enemy> e,
-			LinkedList<Coin> co, Exit ex, ScrollerUp su, ScrollerRight sr,
-			ScrollerDown sd, ScrollerLeft sl, DoorGelb dg, DoorBlau db,
-			DoorGruen dgr, DoorOrange dor, DoorPink dp, DoorSilber ds,
-			KeyBlau kb, KeyGelb kg, KeyGruen kgr, KeyOrange kor, KeyPink kp,
-			KeySilber ks) {
+	public void update(LinkedList<Block> b, LinkedList<Enemy> e, LinkedList<Coin> co, Exit ex, ScrollerUp su,
+			ScrollerRight sr, ScrollerDown sd, ScrollerLeft sl, DoorGelb dg, DoorBlau db, DoorGruen dgr, DoorOrange dor,
+			DoorPink dp, DoorSilber ds, KeyBlau kb, KeyGelb kg, KeyGruen kgr, KeyOrange kor, KeyPink kp, KeySilber ks) {
 
 		// Das er sich ueberhaupt mit der Geschwindigkeit bewegt + Collission
-		Collission(b, e, ex, su, sr, sd, sl, co, dg, db, dgr, dor, dp, ds, kb,
-				kg, kgr, kor, kp, ks);
-		x += velX;
-		y += velY;
-		y += fallingSpeed;
-		y -= sprungkraft;
+		Collission(b, e, ex, su, sr, sd, sl, co, dg, db, dgr, dor, dp, ds, kb, kg, kgr, kor, kp, ks);
+		pos.x += velX;
+		pos.y += velY;
+		pos.y += fallingSpeed;
+		pos.y -= sprungkraft;
 
 		// Falle ich?
 		if (falling) {
@@ -149,12 +136,12 @@ public class Player {
 
 	}
 
-	// Kollissionfunktion mit Gegner ,BlICHWAREINUMLAUTcken und Exit und was dann passiert
-	public void Collission(LinkedList<Block> b, LinkedList<Enemy> e, Exit ex,
-			ScrollerUp su, ScrollerRight sr, ScrollerDown sd, ScrollerLeft sl,
-			LinkedList<Coin> co, DoorGelb dg, DoorBlau db, DoorGruen dgr,
-			DoorOrange dor, DoorPink dp, DoorSilber ds, KeyBlau kb, KeyGelb kg,
-			KeyGruen kgr, KeyOrange kor, KeyPink kp, KeySilber ks) {
+	// Kollissionfunktion mit Gegner ,BlICHWAREINUMLAUTcken und Exit und was dann
+	// passiert
+	public void Collission(LinkedList<Block> b, LinkedList<Enemy> e, Exit ex, ScrollerUp su, ScrollerRight sr,
+			ScrollerDown sd, ScrollerLeft sl, LinkedList<Coin> co, DoorGelb dg, DoorBlau db, DoorGruen dgr,
+			DoorOrange dor, DoorPink dp, DoorSilber ds, KeyBlau kb, KeyGelb kg, KeyGruen kgr, KeyOrange kor, KeyPink kp,
+			KeySilber ks) {
 
 		for (int i = 0; i < co.size(); i++) {
 
@@ -169,9 +156,7 @@ public class Player {
 			}
 
 		}
-		
-		
-		
+
 		for (int i = 0; i < b.size(); i++) {
 
 			if (playerGetBounds().intersects(b.get(i).getObstacleBoundsOben())) {
@@ -208,15 +193,13 @@ public class Player {
 
 		for (int i = 0; i < b.size(); i++) {
 
-			if (playerGetBounds()
-					.intersects(b.get(i).getObstacleBoundsRechts())) {
+			if (playerGetBounds().intersects(b.get(i).getObstacleBoundsRechts())) {
 
-				x += bewegungsgeschwindigkeit;
+				pos.x += bewegungsgeschwindigkeit;
 
-			} else if (playerGetBounds().intersects(
-					b.get(i).getObstacleBoundsLinks())) {
+			} else if (playerGetBounds().intersects(b.get(i).getObstacleBoundsLinks())) {
 
-				x -= bewegungsgeschwindigkeit;
+				pos.x -= bewegungsgeschwindigkeit;
 
 			}
 
@@ -243,17 +226,16 @@ public class Player {
 
 		}
 
-		if (!playerGetBounds().intersects(sd.getBounds())
-				^ !playerGetBounds().intersects(su.getBounds())) {
+		if (!playerGetBounds().intersects(sd.getBounds()) ^ !playerGetBounds().intersects(su.getBounds())) {
 
-			GlobalPosition.environmentVelY = 0;
+			EnviromentallyMoved.environmentVelY = 0;
 			springer = sprunkonstante;
 			allowSpace = true;
 
 		}
 		if (!playerGetBounds().intersects(su.getBounds())) {
 
-			GlobalPosition.environmentVelY = 0;
+			EnviromentallyMoved.environmentVelY = 0;
 			springer = sprunkonstante;
 			allowSpace = true;
 		}
@@ -266,7 +248,7 @@ public class Player {
 				springer -= fallingSpeed + 2;
 			}
 
-			GlobalPosition.environmentVelY = springer;
+			EnviromentallyMoved.environmentVelY = springer;
 
 		}
 
@@ -275,195 +257,173 @@ public class Player {
 			if (falling) {
 
 				fallingSpeed = 0;
-				GlobalPosition.environmentVelY = -maxFallingSpeed;
+				EnviromentallyMoved.environmentVelY = -maxFallingSpeed;
 
 			}
 
 		}
 
-		if (!playerGetBounds().intersects(sl.getBounds())
-				&& !playerGetBounds().intersects(sr.getBounds())) {
-			GlobalPosition.environmentVelX = 0;
+		if (!playerGetBounds().intersects(sl.getBounds()) && !playerGetBounds().intersects(sr.getBounds())) {
+			EnviromentallyMoved.environmentVelX = 0;
 
 		}
 
 		if (playerGetBounds().intersects(sr.getBounds())) {
 
-			GlobalPosition.environmentVelX = -bewegungsgeschwindigkeit;
+			EnviromentallyMoved.environmentVelX = -bewegungsgeschwindigkeit;
 
-			this.x -= bewegungsgeschwindigkeit;
+			pos.x -= bewegungsgeschwindigkeit;
 
 		}
 
 		if (playerGetBounds().intersects(sl.getBounds())) {
 
-			GlobalPosition.environmentVelX = bewegungsgeschwindigkeit;
+			EnviromentallyMoved.environmentVelX = bewegungsgeschwindigkeit;
 
-			this.x += bewegungsgeschwindigkeit;
+			pos.x += bewegungsgeschwindigkeit;
 
 		}
-		
-		
-	//----------------------	
-		 if(!SchluesselBlau){
-		if (playerGetBounds().intersects(db.getDoorBoundsRechts())) {
-		    
-						x += bewegungsgeschwindigkeit;
-System.out.println("Collission");
-					} else if (playerGetBounds().intersects(
-							db.getDoorBoundsLinks())) {
 
-						x -= bewegungsgeschwindigkeit;
+		// ----------------------
+		if (!SchluesselBlau) {
+			if (playerGetBounds().intersects(db.getDoorBoundsRechts())) {
 
-					}
-		 }else if(SchluesselBlau){
-			 if (playerGetBounds().intersects(db.getDoorBoundsRechts())) {
-			 Controller.returnDoorBlau().switchPictures();
-			 }
-		 }
-	
-		//----------------------	
-		//----------------------	
-		 if(!SchluesselGelb){
-		if (playerGetBounds().intersects(dg.getDoorBoundsRechts())) {
-		    
-						x += bewegungsgeschwindigkeit;
+				pos.x += bewegungsgeschwindigkeit;
+				System.out.println("Collission");
+			} else if (playerGetBounds().intersects(db.getDoorBoundsLinks())) {
 
-					} else if (playerGetBounds().intersects(
-							dg.getDoorBoundsLinks())) {
+				pos.x -= bewegungsgeschwindigkeit;
 
-						x -= bewegungsgeschwindigkeit;
+			}
+		} else if (SchluesselBlau) {
+			if (playerGetBounds().intersects(db.getDoorBoundsRechts())) {
+				Controller.returnDoorBlau().switchPictures();
+			}
+		}
 
-					}}else if(SchluesselGelb){
-						if (playerGetBounds().intersects(dg.getDoorBoundsRechts())) {
-						 Controller.returnDoorGelb().switchPictures();
-						}
-					 }
-					
-		
-		//----------------------//----------------------	
-		 if(!SchluesselGruen){
-		if (playerGetBounds().intersects(dgr.getDoorBoundsRechts())) {
-		    
-						x += bewegungsgeschwindigkeit;
+		// ----------------------
+		// ----------------------
+		if (!SchluesselGelb) {
+			if (playerGetBounds().intersects(dg.getDoorBoundsRechts())) {
 
-					} else if (playerGetBounds().intersects(
-							dgr.getDoorBoundsLinks())) {
+				pos.x += bewegungsgeschwindigkeit;
 
-						x -= bewegungsgeschwindigkeit;
+			} else if (playerGetBounds().intersects(dg.getDoorBoundsLinks())) {
 
-					}}else if(SchluesselGruen){
-						if (playerGetBounds().intersects(dgr.getDoorBoundsRechts())) { 
-						 Controller.returnDoorGruen().switchPictures();
-						}
-					 }
-					
-		
-		
-		
-		//----------------------//----------------------	
-		 if(!SchluesselOrange){
-		if (playerGetBounds().intersects(dor.getDoorBoundsRechts())) {
-		    
-						x += bewegungsgeschwindigkeit;
+				pos.x -= bewegungsgeschwindigkeit;
 
-					} else if (playerGetBounds().intersects(
-							dor.getDoorBoundsLinks())) {
+			}
+		} else if (SchluesselGelb) {
+			if (playerGetBounds().intersects(dg.getDoorBoundsRechts())) {
+				Controller.returnDoorGelb().switchPictures();
+			}
+		}
 
-						x -= bewegungsgeschwindigkeit;
+		// ----------------------//----------------------
+		if (!SchluesselGruen) {
+			if (playerGetBounds().intersects(dgr.getDoorBoundsRechts())) {
 
-					}}else if(SchluesselOrange){
-						if (playerGetBounds().intersects(dor.getDoorBoundsRechts())) {
-						 Controller.returnDoorOrange().switchPictures();
-						}
-					 }
-					
-		
-	
-		
-		//----------------------//----------------------	
-		 if(!SchluesselPink){
-		if (playerGetBounds().intersects(dp.getDoorBoundsRechts())) {
-		    
-						x += bewegungsgeschwindigkeit;
+				pos.x += bewegungsgeschwindigkeit;
 
-					} else if (playerGetBounds().intersects(
-							dp.getDoorBoundsLinks())) {
+			} else if (playerGetBounds().intersects(dgr.getDoorBoundsLinks())) {
 
-						x -= bewegungsgeschwindigkeit;
+				pos.x -= bewegungsgeschwindigkeit;
 
-					}}else if(SchluesselPink){
-						if (playerGetBounds().intersects(dp.getDoorBoundsRechts())) {
-						 Controller.returnDoorPink().switchPictures();
-						}
-					 }
-					
-	
-		
-		
-		//----------------------//----------------------	
-		 if(!SchluesselSilber){
-		if (playerGetBounds().intersects(ds.getDoorBoundsRechts())) {
-		    
-						x += bewegungsgeschwindigkeit;
+			}
+		} else if (SchluesselGruen) {
+			if (playerGetBounds().intersects(dgr.getDoorBoundsRechts())) {
+				Controller.returnDoorGruen().switchPictures();
+			}
+		}
 
-					} else if (playerGetBounds().intersects(
-							ds.getDoorBoundsLinks())) {
+		// ----------------------//----------------------
+		if (!SchluesselOrange) {
+			if (playerGetBounds().intersects(dor.getDoorBoundsRechts())) {
 
-						x -= bewegungsgeschwindigkeit;
+				pos.x += bewegungsgeschwindigkeit;
 
-					}}else if(SchluesselSilber){
-						if (playerGetBounds().intersects(ds.getDoorBoundsRechts())) {
-						 Controller.returnDoorSilber().switchPictures();
-						}
-					 }
-					
-		
-		
-		
-		//----------------------
-		if(playerGetBounds().intersects(kb.getBounds())){
+			} else if (playerGetBounds().intersects(dor.getDoorBoundsLinks())) {
+
+				pos.x -= bewegungsgeschwindigkeit;
+
+			}
+		} else if (SchluesselOrange) {
+			if (playerGetBounds().intersects(dor.getDoorBoundsRechts())) {
+				Controller.returnDoorOrange().switchPictures();
+			}
+		}
+
+		// ----------------------//----------------------
+		if (!SchluesselPink) {
+			if (playerGetBounds().intersects(dp.getDoorBoundsRechts())) {
+
+				pos.x += bewegungsgeschwindigkeit;
+
+			} else if (playerGetBounds().intersects(dp.getDoorBoundsLinks())) {
+
+				pos.x -= bewegungsgeschwindigkeit;
+
+			}
+		} else if (SchluesselPink) {
+			if (playerGetBounds().intersects(dp.getDoorBoundsRechts())) {
+				Controller.returnDoorPink().switchPictures();
+			}
+		}
+
+		// ----------------------//----------------------
+		if (!SchluesselSilber) {
+			if (playerGetBounds().intersects(ds.getDoorBoundsRechts())) {
+
+				pos.x += bewegungsgeschwindigkeit;
+
+			} else if (playerGetBounds().intersects(ds.getDoorBoundsLinks())) {
+
+				pos.x -= bewegungsgeschwindigkeit;
+
+			}
+		} else if (SchluesselSilber) {
+			if (playerGetBounds().intersects(ds.getDoorBoundsRechts())) {
+				Controller.returnDoorSilber().switchPictures();
+			}
+		}
+
+		// ----------------------
+		if (playerGetBounds().intersects(kb.getBounds())) {
 			SchluesselBlau = true;
 			Controller.returnKeyBlau().hideKey();
 		}
-		if(playerGetBounds().intersects(kg.getBounds())){
-		
+		if (playerGetBounds().intersects(kg.getBounds())) {
+
 			SchluesselGelb = true;
 			Controller.returnKeyGelb().hideKey();
 		}
-		
-		if(playerGetBounds().intersects(kgr.getBounds())){
+
+		if (playerGetBounds().intersects(kgr.getBounds())) {
 			SchluesselGruen = true;
 			Controller.returnKeyGruen().hideKey();
 		}
-		
-		if(playerGetBounds().intersects(kor.getBounds())){
+
+		if (playerGetBounds().intersects(kor.getBounds())) {
 			SchluesselOrange = true;
 			Controller.returnKeyOrange().hideKey();
 		}
-		
-		if(playerGetBounds().intersects(kp.getBounds())){
+
+		if (playerGetBounds().intersects(kp.getBounds())) {
 			SchluesselPink = true;
 			Controller.returnKeyPink().hideKey();
 		}
-		
-		if(playerGetBounds().intersects(ks.getBounds())){
+
+		if (playerGetBounds().intersects(ks.getBounds())) {
 			SchluesselSilber = true;
 			Controller.returnKeySilber().hideKey();
-			}
-		
-		 
-		 
-		 
-		 }
-		
+		}
 
-	
+	}
 
 	// Malfunktion
 	public void paint(Graphics2D g2d) {
 
-		g2d.drawImage(getPlayerImage(), x, y - 13, null);
+		g2d.drawImage(getPlayerImage(),pos.x,pos.y - 13, null);
 
 	}
 
@@ -512,8 +472,8 @@ System.out.println("Collission");
 
 				if (!falling) {
 					if (boden) {
-						//s.playSoundOnce();
-						//boden = false;
+						// s.playSoundOnce();
+						// boden = false;
 					}
 					sprungkraft = sprunkonstante;
 
@@ -535,7 +495,6 @@ System.out.println("Collission");
 			--Game.level;
 			InternerLvLcreator.internerLvlControl();
 			break;
-		
 
 		}
 
@@ -591,7 +550,7 @@ System.out.println("Collission");
 	// Kollissionsviereck
 	public Rectangle playerGetBounds() {
 
-		return new Rectangle(x, y, widthPlayer, heightPlayer + 1);
+		return new Rectangle(pos.x, pos.y, widthPlayer, heightPlayer + 1);
 	}
 
 	// Hol das bild her!
@@ -605,15 +564,16 @@ System.out.println("Collission");
 
 	public int returnPlayerX() {
 
-		return this.x;
+		return pos.x;
 	}
 
 	public int returnPlayerY() {
 
-		return this.y;
+		return pos.y;
 
 	}
-	public void deleteInventory(){
+
+	public void deleteInventory() {
 		SchluesselBlau = false;
 		SchluesselGelb = false;
 		SchluesselGruen = false;

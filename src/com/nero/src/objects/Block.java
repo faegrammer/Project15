@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 import com.nero.src.Game;
-import com.nero.src.input.GlobalPosition;
+import com.nero.src.input.EnviromentallyMoved;
 
 public class Block {
 
@@ -55,8 +55,8 @@ public class Block {
 	// Updatemethode....
 	public void update() {
 
-		x += GlobalPosition.environmentVelX;
-		y += GlobalPosition.environmentVelY;
+		x += EnviromentallyMoved.environmentVelX;
+		y += EnviromentallyMoved.environmentVelY;
 
 	}
 

@@ -249,7 +249,7 @@ try{
 
 				if (s.equals("p")) {
 
-					Controller.returnPlayer().setPlayerPosition(0,0);
+					Controller.returnPlayer().setPos(0,0);
 					oldX = i * 50 +5 ;
 					oldY = k * 50 +8 ;
 				}
@@ -390,7 +390,7 @@ try{
 
 				else if (s.equals("a")) {
 
-					Controller.ex.setExitPosition(i * 50 - oldX, k * 50 - oldY);
+					Controller.ex.setPos(i * 50 - oldX, k * 50 - oldY);
 
 				} else if (s.equals("?")) {
 

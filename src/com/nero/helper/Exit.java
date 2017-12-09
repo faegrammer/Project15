@@ -6,11 +6,11 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-import com.nero.src.input.GlobalPosition;
+import com.nero.src.input.EnviromentallyMoved;
 
 //Ja auch der Ausgang braucht ein Objekt, der Globalposition ausgibt
 
-public class Exit extends GlobalPosition {
+public class Exit extends EnviromentallyMoved {
 
 	// Meh... woher bild du haben?
 
@@ -31,23 +31,16 @@ public class Exit extends GlobalPosition {
 	// Updaten musst du auch noch? Spaeter zum Scrollen ja.. mal schauen ob ich's
 	// verwende
 
-	public void update() {
-
-		x += environmentVelX;
-		y += environmentVelY;
-
-	}
-
 	// Erschafft das Kollissionsviereck
 	public Rectangle getExitBounds() {
 
-		return new Rectangle(x, y, exitWidth, exitHeight);
+		return new Rectangle(pos.x,pos.y, exitWidth, exitHeight);
 	}
 
 	// Paint Klasse um es ueberhaupt darstellen zu koennen....
 	public void paint(Graphics2D g2d) {
 
-		g2d.drawImage(getImage(), x, y, null);
+		g2d.drawImage(getImage(), pos.x,pos.y, null);
 
 	}
 
@@ -60,19 +53,5 @@ public class Exit extends GlobalPosition {
 
 	}
 
-	// Hier kann ich nach belieben das Objekt verschieben, yayy
-	public void setExitPosition(int x, int y) {
-
-		this.x = x;
-		this.y = y;
-
-	}
-	
-	public void setPosition(int x, int y){
-		this.x = x;
-		this.y = y;
-		
-		
-	}
 
 }

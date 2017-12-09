@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-import com.nero.src.input.GlobalPosition;
+import com.nero.src.input.EnviromentallyMoved;
 
 public class KeyFather {
 	
@@ -65,8 +65,8 @@ public class KeyFather {
 	
 	public void update(){
 		
-		 this.x += GlobalPosition.environmentVelX;
-		 this.y += GlobalPosition.environmentVelY;
+		 this.x += EnviromentallyMoved.environmentVelX;
+		 this.y += EnviromentallyMoved.environmentVelY;
 			
 		}
 	

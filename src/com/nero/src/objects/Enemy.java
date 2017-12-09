@@ -12,9 +12,9 @@ import com.nero.helper.BouncerToDown;
 import com.nero.helper.BouncerToLeft;
 import com.nero.helper.BouncerToRight;
 import com.nero.helper.BouncerToUp;
-import com.nero.src.input.GlobalPosition;
+import com.nero.src.input.EnviromentallyMoved;
 
-public class Enemy extends GlobalPosition {
+public class Enemy extends Moveable{
 
 	// Bildpfad
 	private String imagePath;
@@ -26,9 +26,7 @@ public class Enemy extends GlobalPosition {
 	private int enemyHeight = 40;
 
 	// Geschwindigkeit von Enemy
-	private int velX;
-	private int velY;
-	
+
 
 	public Enemy(int x, int y, boolean nachrechts) {
 		super(x, y);
@@ -45,19 +43,6 @@ public class Enemy extends GlobalPosition {
 		
 		
 		
-
-	}
-
-	// Updated alles
-	public void update() {
-
-	
-		x += velX;
-		y += velY;
-		// System.out.println(velX);
-
-		x += environmentVelX;
-		y += environmentVelY;
 
 	}
 
@@ -120,7 +105,7 @@ public class Enemy extends GlobalPosition {
 	// Methode um Gegner zu malen
 	public void paint(Graphics2D g2d) {
 
-		g2d.drawImage(getEnemyImage(), x, y, null);
+		g2d.drawImage(getEnemyImage(), pos.x, pos.y, null);
 		// g2d.fill(getEnemyBounds());
 
 	}
@@ -137,12 +122,12 @@ public class Enemy extends GlobalPosition {
 	// Kollissionsdreieck
 	public Rectangle getEnemyBounds() {
 
-		return new Rectangle(x, y, enemyWidth, enemyHeight);
+		return new Rectangle(pos.x, pos.y, enemyWidth, enemyHeight);
 	}
 	
 	public void setPosition(int x, int y){
-		this.x = x;
-		this.y = y;
+		pos.x = x;
+		pos.y = y;
 		
 		
 	}
