@@ -53,6 +53,38 @@ public class Controller {
 
 
 	public static void lvlControl() {
+		// Einfuehren von allen Objecten in Abhaengigkeit von dem Level..
+		// ...mus noch ueberarbeitet werden
+		/*
+		 * if (Game.level == 1) {
+		 * 
+		 * ex.setExitPosition(exitpositionx, exitpositiony);
+		 * p.setPlayerPosition(50,150);
+		 * 
+		 * 
+		 * 
+		 * addBouncerToDown(new BouncerToDown(50, 50, true));
+		 * 
+		 * for (int i = 0; i <= Window.windowWidth; i += 50) {
+		 * 
+		 * addBlock(new Block(i, Window.windowHeight - 40)); }
+		 * 
+		 * for (int i = 0; i <= Window.windowWidth; i += 50) {
+		 * 
+		 * addBlock(new Block(i, Window.windowHeight + 200)); }
+		 * 
+		 * addBlock(new Block(50,200)); addBlock(new Block(100,150)); addBlock(new
+		 * Block(150,-50)); addBlock(new Block(150,-500)); addBlock(new
+		 * Block(150,-150));
+		 * 
+		 * } else if (Game.level == 2) {
+		 * 
+		 * ex.setExitPosition(200, 90); p.setPlayerPosition(80, 50);
+		 * 
+		 * addBlock(new Block(80, 70)); addBlock(new Block(50, 70));
+		 * 
+		 * }
+		 */
 
 	}
 

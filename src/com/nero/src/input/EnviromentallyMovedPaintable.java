@@ -6,7 +6,7 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-public class EnviromentallyMovedPaintable extends EnviromentallyMoved {
+public class EnviromentallyMovedPaintable extends EnviromentallyMoved implements EnviromentallyMovedPaintableI {
 	protected String imagePath;
 
 	public EnviromentallyMovedPaintable(int x, int y, int width, int height, String imagePath) {
@@ -19,6 +19,10 @@ public class EnviromentallyMovedPaintable extends EnviromentallyMoved {
 		this(p.x, p.y, width, height, imagePath);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.input.EnviromentallyMovedPaintableI#getImage()
+	 */
+	@Override
 	public Image getImage() {
 
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePath));
@@ -27,6 +31,10 @@ public class EnviromentallyMovedPaintable extends EnviromentallyMoved {
 	}
 
 	// Methode um Gegner zu malen
+	/* (non-Javadoc)
+	 * @see com.nero.src.input.EnviromentallyMovedPaintableI#paint(java.awt.Graphics2D)
+	 */
+	@Override
 	public void paint(Graphics2D g2d) {
 
 		g2d.drawImage(getImage(), pos.x, pos.y, null);

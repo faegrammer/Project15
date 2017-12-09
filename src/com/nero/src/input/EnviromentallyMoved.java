@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 
 import com.nero.src.Inworldobject;
 
-public abstract class EnviromentallyMoved extends GlobalPosition implements Inworldobject {
+public abstract class EnviromentallyMoved extends GlobalPosition implements Inworldobject, EnviromentallyMovedI {
 
 	public EnviromentallyMoved(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -19,6 +19,9 @@ public abstract class EnviromentallyMoved extends GlobalPosition implements Inwo
 	public static int environmentVelX;
 	public static int environmentVelY;
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.input.EnviromentallyMovedI#update()
+	 */
 	@Override
 	public void update() {
 
@@ -43,6 +46,9 @@ public abstract class EnviromentallyMoved extends GlobalPosition implements Inwo
 		EnviromentallyMoved.environmentVelY = environmentVelY;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.input.EnviromentallyMovedI#getBounds()
+	 */
 	@Override
 	public Rectangle getBounds() {
 

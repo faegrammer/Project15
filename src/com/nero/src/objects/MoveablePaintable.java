@@ -6,7 +6,7 @@ import com.nero.src.Inworldobject;
 import com.nero.src.Visible;
 import com.nero.src.input.EnviromentallyMovedPaintable;
 
-public abstract class MoveablePaintable extends EnviromentallyMovedPaintable implements Visible, Inworldobject {
+public abstract class MoveablePaintable extends EnviromentallyMovedPaintable implements Visible, Inworldobject, MoveablePaintableI {
 	protected int velX;
 	protected int velY;
 
@@ -19,6 +19,9 @@ public abstract class MoveablePaintable extends EnviromentallyMovedPaintable imp
 		this(p.x, p.y, width, height, imagePath);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.MoveablePaintableI#update()
+	 */
 	@Override
 	public void update() {
 

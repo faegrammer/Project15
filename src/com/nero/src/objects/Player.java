@@ -97,15 +97,16 @@ public class Player extends MoveablePaintable implements PlayerI {
 	 * @see com.nero.src.objects.PlayerI#update(java.util.LinkedList)
 	 */
 	@Override
-	public void update(LinkedList<InteractsWithPlayer> interact) {
+	public void update() {
 
 		// Das er sich ueberhaupt mit der Geschwindigkeit bewegt + Collission
-		collission(interact);
 		pos.x += velX;
 		pos.y += velY;
 		pos.y += fallingSpeed;
 		pos.y -= sprungkraft;
 
+
+	
 		// Falle ich?
 		if (falling) {
 
@@ -136,22 +137,7 @@ public class Player extends MoveablePaintable implements PlayerI {
 
 	}
 
-	// Kollissionfunktion mit Gegner ,BlICHWAREINUMLAUTcken und Exit und was dann
-	// passiert
-	/* (non-Javadoc)
-	 * @see com.nero.src.objects.PlayerI#collission(java.util.LinkedList)
-	 */
-	@Override
-	public void collission(LinkedList<InteractsWithPlayer> interact) {
 
-		
-
-	}
-
-	// Das man sich ueberhaupt bewegen kann
-	/* (non-Javadoc)
-	 * @see com.nero.src.objects.PlayerI#keyPressed(java.awt.event.KeyEvent)
-	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 
