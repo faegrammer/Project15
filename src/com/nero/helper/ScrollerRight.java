@@ -9,4 +9,10 @@ public class ScrollerRight extends ScrollerFather {
 
 	}
 
+	@Override
+	public void interact() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

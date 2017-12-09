@@ -5,8 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import com.nero.src.input.GlobalPosition;
+import com.nero.src.objects.InteractsWithPlayer;
 
-public class ScrollerFather extends GlobalPosition {
+public abstract class ScrollerFather extends GlobalPosition  implements InteractsWithPlayer {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;

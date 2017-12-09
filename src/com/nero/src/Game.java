@@ -24,25 +24,20 @@ import com.nero.src.objects.Block;
 import com.nero.src.objects.Coin;
 import com.nero.src.objects.Ghostly;
 import com.nero.src.objects.Player;
+import com.nero.src.objects.PlayerI;
 
 public class Game extends JPanel implements Runnable {
 
 	/**
 	 * 
 	 */
-	// Eclipse wollte es so...
 	private static final long serialVersionUID = 1L;
 
-	// Ja muss ich ueberhaupt funktionieren?
 	public static boolean running = false;
 
-	// Schon vorbei?
 	public static boolean gameover = false;
 
-	/*
-	 * Ich bin zu Faul jedes mal die Funktion rauszusuchen also lICHWAREINUMLAUTse
-	 * ich es ueber Attribute wo der Spieler platziert wird
-	 */
+	
 	ScrollerRight sr;
 	ScrollerDown sd;
 	ScrollerUp su;
@@ -57,11 +52,9 @@ public class Game extends JPanel implements Runnable {
 
 	public static boolean soundOn = true;
 
-	// Ja wo is denn der Spieler? Ach da isser!
 	public int playerPositionX = 20;
 	public int playerPositionY = 20;
 
-	// Hmm.. wo muss ich doch gleich hin? Oh.. da stehts
 	public int exitPositionX = 500;
 	public int exitPositionY = 500;
 	public String imagePathBox = "/images/obstacles/Doors/Keys/KeyMini/Box.png";
@@ -85,7 +78,7 @@ public class Game extends JPanel implements Runnable {
 	public static boolean allessichtbar = false;
 
 	// Und her mit dem Objekt Player
-	Player p;
+	PlayerI p;
 
 	// Dass du auch immer alles Kontrollieren musst..
 	Controller c;
@@ -104,20 +97,13 @@ public class Game extends JPanel implements Runnable {
 
 		this.j = j;
 
-		// createMenue();
-
-		// Initiiere das Spiel!
-		System.out.println("blubb");
-
 		initGame();
 	}
 
 	// Und hier ist die Methode dazu:
 	public void initGame() {
 
-		// Panel "hICHWAREINUMLAUTrt" sofort beim starten auf Input
-
-		// Muss ich das ueberhaupt tun, oder schon Spiel vorbei?
+	
 		if (!gameover) {
 			back = new Background();
 
@@ -146,11 +132,9 @@ public class Game extends JPanel implements Runnable {
 
 	}
 
-	// Auch die Klasse hat ein Update... faszinierend
 	public void update() {
 
-		// Wenn das Spiel vorbei ist.. hau aus dem System ab und wander' nach
-		// Amerika aus
+
 		if (gameover) {
 
 			System.exit(0);
@@ -167,24 +151,15 @@ public class Game extends JPanel implements Runnable {
 
 	}
 
-	/*
-	 * Hier ist das Herzstueck des zeichnens.. hier wird alles zusammen auf das
-	 * Fenster geklatscht!
-	 */
+
 	@Override
 	public void paint(Graphics g) {
-		/*
-		 * Das ist so super was du da reingeschrieben hast.. das schicke ich doch
-		 * glattmeiner stammklasse
-		 */
+
 		super.paint(g);
-		// Ich bin aber so gemein und caste es in ein Schaf... aeh in Graphics2D
 		Graphics2D g2d = (Graphics2D) g;
 
-		// Muss ich das ueberhaupt tun?
 		if (!gameover) {
 			back.paint(g2d);
-			// p.paint(g2d);
 			su.paint(g2d);
 			sd.paint(g2d);
 			sr.paint(g2d);
@@ -192,7 +167,6 @@ public class Game extends JPanel implements Runnable {
 
 			// Malt alles was im Controller ist
 			c.paint(g2d);
-			// ex.paint(g2d);
 			g2d.setColor(Color.white);
 
 			g2d.drawString("Score: " + Score, Window.windowWidth - 100, 20);
@@ -254,12 +228,10 @@ public class Game extends JPanel implements Runnable {
 
 		while (running) {
 
-			// Jeder braucht ein bisschen schlaf...
 			try {
 				Thread.sleep(25);
 			}
 
-			// Ausser es geht was schief, dann meckere ich
 			catch (Exception e) {
 
 				e.printStackTrace();

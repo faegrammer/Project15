@@ -28,7 +28,7 @@ import com.nero.src.objects.doors.keys.KeyOrange;
 import com.nero.src.objects.doors.keys.KeyPink;
 import com.nero.src.objects.doors.keys.KeySilber;
 
-public class Player extends MoveablePaintable {
+public class Player extends MoveablePaintable implements PlayerI {
 	// TODO
 	// // Malfunktion
 	// public void paint(Graphics2D g2d) {
@@ -38,9 +38,6 @@ public class Player extends MoveablePaintable {
 	// }
 
 	// Ausmasse + woher kriegt er sein Bildchen her
-
-	public static final int playerWidth = 33;
-	public static final int playerHeight = 50;
 
 	// Attribute wie schnell der Typ ist
 	private int bewegungsgeschwindigkeit = 5;
@@ -96,12 +93,14 @@ public class Player extends MoveablePaintable {
 		this(p.x, p.y);
 	}
 
-	public void update(LinkedList<Block> b, LinkedList<Ghostly> e, LinkedList<Coin> co, Exit ex, ScrollerUp su,
-			ScrollerRight sr, ScrollerDown sd, ScrollerLeft sl, DoorGelb dg, DoorBlau db, DoorGruen dgr, DoorOrange dor,
-			DoorPink dp, DoorSilber ds, KeyBlau kb, KeyGelb kg, KeyGruen kgr, KeyOrange kor, KeyPink kp, KeySilber ks) {
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#update(java.util.LinkedList)
+	 */
+	@Override
+	public void update(LinkedList<InteractsWithPlayer> interact) {
 
 		// Das er sich ueberhaupt mit der Geschwindigkeit bewegt + Collission
-		Collission(b, e, ex, su, sr, sd, sl, co, dg, db, dgr, dor, dp, ds, kb, kg, kgr, kor, kp, ks);
+		collission(interact);
 		pos.x += velX;
 		pos.y += velY;
 		pos.y += fallingSpeed;
@@ -139,288 +138,21 @@ public class Player extends MoveablePaintable {
 
 	// Kollissionfunktion mit Gegner ,BlICHWAREINUMLAUTcken und Exit und was dann
 	// passiert
-	public void Collission(LinkedList<Block> b, LinkedList<Ghostly> e, Exit ex, ScrollerUp su, ScrollerRight sr,
-			ScrollerDown sd, ScrollerLeft sl, LinkedList<Coin> co, DoorGelb dg, DoorBlau db, DoorGruen dgr,
-			DoorOrange dor, DoorPink dp, DoorSilber ds, KeyBlau kb, KeyGelb kg, KeyGruen kgr, KeyOrange kor, KeyPink kp,
-			KeySilber ks) {
-
-		for (int i = 0; i < co.size(); i++) {
-
-			if (getBounds().intersects(co.get(i).getBounds())) {
-
-				Controller.removeCoin(co.get(i));
-				i = co.size();
-				Game.Score++;
-
-			} else {
-
-			}
-
-		}
-
-		for (int i = 0; i < b.size(); i++) {
-
-			if (getBounds().intersects(b.get(i).getObstacleBoundsOben())) {
-
-				i = b.size();
-				falling = false;
-				fallingSpeed = 0;
-				boden = true;
-
-			}
-
-			else {
-				falling = true;
-				boden = false;
-
-			}
-
-		}
-		// Kollission Unten
-
-		for (int i = 0; i < b.size(); i++) {
-
-			if (getBounds().intersects(b.get(i).getObstacleBoundsUnten())) {
-
-				i = b.size();
-				falling = true;
-				fallingSpeed = sprungkraft + maxFallingSpeed;
-
-			}
-
-		}
-
-		// Kollission Rechts und Links
-
-		for (int i = 0; i < b.size(); i++) {
-
-			if (getBounds().intersects(b.get(i).getObstacleBoundsRechts())) {
-
-				pos.x += bewegungsgeschwindigkeit;
-
-			} else if (getBounds().intersects(b.get(i).getObstacleBoundsLinks())) {
-
-				pos.x -= bewegungsgeschwindigkeit;
-
-			}
-
-		}
-
-		// Wenn ich getroffen wered, kill das spiel
-		for (int i = 0; i < e.size(); i++) {
-
-			if (getBounds().intersects(e.get(i).getBounds())) {
-				Game.Score = 0;
-				Controller.removeAllExceptNotList();
-				InternerLvLcreator.internerLvlControl();
-				break;
-			}
-
-		}
-		// Wenn Exit getroffen erhöhe den Level
-		if (getBounds().intersects(ex.getBounds())) {
-
-			++Game.level;
-			Controller.removeAllExceptNotList();
-			InternerLvLcreator.internerLvlControl();
-
-		}
-
-		if (!getBounds().intersects(sd.getBounds()) ^ !getBounds().intersects(su.getBounds())) {
-
-			EnviromentallyMoved.environmentVelY = 0;
-			springer = sprunkonstante;
-			allowSpace = true;
-
-		}
-		if (!getBounds().intersects(su.getBounds())) {
-
-			EnviromentallyMoved.environmentVelY = 0;
-			springer = sprunkonstante;
-			allowSpace = true;
-		}
-
-		if (getBounds().intersects(su.getBounds())) {
-
-			allowSpace = false;
-
-			if (springer > 0) {
-				springer -= fallingSpeed + 2;
-			}
-
-			EnviromentallyMoved.environmentVelY = springer;
-
-		}
-
-		if (getBounds().intersects(sd.getBounds())) {
-
-			if (falling) {
-
-				fallingSpeed = 0;
-				EnviromentallyMoved.environmentVelY = -maxFallingSpeed;
-
-			}
-
-		}
-
-		if (!getBounds().intersects(sl.getBounds()) && !getBounds().intersects(sr.getBounds())) {
-			EnviromentallyMoved.environmentVelX = 0;
-
-		}
-
-		if (getBounds().intersects(sr.getBounds())) {
-
-			EnviromentallyMoved.environmentVelX = -bewegungsgeschwindigkeit;
-
-			pos.x -= bewegungsgeschwindigkeit;
-
-		}
-
-		if (getBounds().intersects(sl.getBounds())) {
-
-			EnviromentallyMoved.environmentVelX = bewegungsgeschwindigkeit;
-
-			pos.x += bewegungsgeschwindigkeit;
-
-		}
-
-		// ----------------------
-		if (!SchluesselBlau) {
-			if (getBounds().intersects(db.getDoorBoundsRechts())) {
-
-				pos.x += bewegungsgeschwindigkeit;
-				System.out.println("Collission");
-			} else if (getBounds().intersects(db.getDoorBoundsLinks())) {
-
-				pos.x -= bewegungsgeschwindigkeit;
-
-			}
-		} else if (SchluesselBlau) {
-			if (getBounds().intersects(db.getDoorBoundsRechts())) {
-				Controller.returnDoorBlau().switchPictures();
-			}
-		}
-
-		// ----------------------
-		// ----------------------
-		if (!SchluesselGelb) {
-			if (getBounds().intersects(dg.getDoorBoundsRechts())) {
-
-				pos.x += bewegungsgeschwindigkeit;
-
-			} else if (getBounds().intersects(dg.getDoorBoundsLinks())) {
-
-				pos.x -= bewegungsgeschwindigkeit;
-
-			}
-		} else if (SchluesselGelb) {
-			if (getBounds().intersects(dg.getDoorBoundsRechts())) {
-				Controller.returnDoorGelb().switchPictures();
-			}
-		}
-
-		// ----------------------//----------------------
-		if (!SchluesselGruen) {
-			if (getBounds().intersects(dgr.getDoorBoundsRechts())) {
-
-				pos.x += bewegungsgeschwindigkeit;
-
-			} else if (getBounds().intersects(dgr.getDoorBoundsLinks())) {
-
-				pos.x -= bewegungsgeschwindigkeit;
-
-			}
-		} else if (SchluesselGruen) {
-			if (getBounds().intersects(dgr.getDoorBoundsRechts())) {
-				Controller.returnDoorGruen().switchPictures();
-			}
-		}
-
-		// ----------------------//----------------------
-		if (!SchluesselOrange) {
-			if (getBounds().intersects(dor.getDoorBoundsRechts())) {
-
-				pos.x += bewegungsgeschwindigkeit;
-
-			} else if (getBounds().intersects(dor.getDoorBoundsLinks())) {
-
-				pos.x -= bewegungsgeschwindigkeit;
-
-			}
-		} else if (SchluesselOrange) {
-			if (getBounds().intersects(dor.getDoorBoundsRechts())) {
-				Controller.returnDoorOrange().switchPictures();
-			}
-		}
-
-		// ----------------------//----------------------
-		if (!SchluesselPink) {
-			if (getBounds().intersects(dp.getDoorBoundsRechts())) {
-
-				pos.x += bewegungsgeschwindigkeit;
-
-			} else if (getBounds().intersects(dp.getDoorBoundsLinks())) {
-
-				pos.x -= bewegungsgeschwindigkeit;
-
-			}
-		} else if (SchluesselPink) {
-			if (getBounds().intersects(dp.getDoorBoundsRechts())) {
-				Controller.returnDoorPink().switchPictures();
-			}
-		}
-
-		// ----------------------//----------------------
-		if (!SchluesselSilber) {
-			if (getBounds().intersects(ds.getDoorBoundsRechts())) {
-
-				pos.x += bewegungsgeschwindigkeit;
-
-			} else if (getBounds().intersects(ds.getDoorBoundsLinks())) {
-
-				pos.x -= bewegungsgeschwindigkeit;
-
-			}
-		} else if (SchluesselSilber) {
-			if (getBounds().intersects(ds.getDoorBoundsRechts())) {
-				Controller.returnDoorSilber().switchPictures();
-			}
-		}
-
-		// ----------------------
-		if (getBounds().intersects(kb.getBounds())) {
-			SchluesselBlau = true;
-			Controller.returnKeyBlau().hideKey();
-		}
-		if (getBounds().intersects(kg.getBounds())) {
-
-			SchluesselGelb = true;
-			Controller.returnKeyGelb().hideKey();
-		}
-
-		if (getBounds().intersects(kgr.getBounds())) {
-			SchluesselGruen = true;
-			Controller.returnKeyGruen().hideKey();
-		}
-
-		if (getBounds().intersects(kor.getBounds())) {
-			SchluesselOrange = true;
-			Controller.returnKeyOrange().hideKey();
-		}
-
-		if (getBounds().intersects(kp.getBounds())) {
-			SchluesselPink = true;
-			Controller.returnKeyPink().hideKey();
-		}
-
-		if (getBounds().intersects(ks.getBounds())) {
-			SchluesselSilber = true;
-			Controller.returnKeySilber().hideKey();
-		}
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#collission(java.util.LinkedList)
+	 */
+	@Override
+	public void collission(LinkedList<InteractsWithPlayer> interact) {
+
+		
 
 	}
 
 	// Das man sich ueberhaupt bewegen kann
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#keyPressed(java.awt.event.KeyEvent)
+	 */
+	@Override
 	public void keyPressed(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
@@ -493,6 +225,10 @@ public class Player extends MoveablePaintable {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#keyTyped(java.awt.event.KeyEvent)
+	 */
+	@Override
 	public void keyTyped(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
@@ -501,6 +237,10 @@ public class Player extends MoveablePaintable {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#keyReleased(java.awt.event.KeyEvent)
+	 */
+	@Override
 	public void keyReleased(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
@@ -541,6 +281,9 @@ public class Player extends MoveablePaintable {
 	}
 
 	// Kollissionsviereck
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getBounds()
+	 */
 	@Override
 	public Rectangle getBounds() {
 
@@ -549,17 +292,29 @@ public class Player extends MoveablePaintable {
 
 	// Hol das bild her!
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#returnPlayerX()
+	 */
+	@Override
 	public int returnPlayerX() {
 
 		return pos.x;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#returnPlayerY()
+	 */
+	@Override
 	public int returnPlayerY() {
 
 		return pos.y;
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#deleteInventory()
+	 */
+	@Override
 	public void deleteInventory() {
 		SchluesselBlau = false;
 		SchluesselGelb = false;
@@ -567,6 +322,322 @@ public class Player extends MoveablePaintable {
 		SchluesselOrange = false;
 		SchluesselPink = false;
 		SchluesselSilber = false;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getBewegungsgeschwindigkeit()
+	 */
+	@Override
+	public int getBewegungsgeschwindigkeit() {
+		return bewegungsgeschwindigkeit;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setBewegungsgeschwindigkeit(int)
+	 */
+	@Override
+	public void setBewegungsgeschwindigkeit(int bewegungsgeschwindigkeit) {
+		this.bewegungsgeschwindigkeit = bewegungsgeschwindigkeit;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getSprungkraft()
+	 */
+	@Override
+	public int getSprungkraft() {
+		return sprungkraft;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setSprungkraft(int)
+	 */
+	@Override
+	public void setSprungkraft(int sprungkraft) {
+		this.sprungkraft = sprungkraft;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getSprunkonstante()
+	 */
+	@Override
+	public int getSprunkonstante() {
+		return sprunkonstante;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setSprunkonstante(int)
+	 */
+	@Override
+	public void setSprunkonstante(int sprunkonstante) {
+		this.sprunkonstante = sprunkonstante;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getSpringer()
+	 */
+	@Override
+	public int getSpringer() {
+		return springer;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setSpringer(int)
+	 */
+	@Override
+	public void setSpringer(int springer) {
+		this.springer = springer;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#isAllowSpace()
+	 */
+	@Override
+	public boolean isAllowSpace() {
+		return allowSpace;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setAllowSpace(boolean)
+	 */
+	@Override
+	public void setAllowSpace(boolean allowSpace) {
+		this.allowSpace = allowSpace;
+	}
+
+	public static boolean isDarfRechts() {
+		return darfRechts;
+	}
+
+	public static void setDarfRechts(boolean darfRechts) {
+		Player.darfRechts = darfRechts;
+	}
+
+	public static boolean isDarfLinks() {
+		return darfLinks;
+	}
+
+	public static void setDarfLinks(boolean darfLinks) {
+		Player.darfLinks = darfLinks;
+	}
+
+	public static boolean isSchluesselBlau() {
+		return SchluesselBlau;
+	}
+
+	public static void setSchluesselBlau(boolean schluesselBlau) {
+		SchluesselBlau = schluesselBlau;
+	}
+
+	public static boolean isSchluesselGelb() {
+		return SchluesselGelb;
+	}
+
+	public static void setSchluesselGelb(boolean schluesselGelb) {
+		SchluesselGelb = schluesselGelb;
+	}
+
+	public static boolean isSchluesselGruen() {
+		return SchluesselGruen;
+	}
+
+	public static void setSchluesselGruen(boolean schluesselGruen) {
+		SchluesselGruen = schluesselGruen;
+	}
+
+	public static boolean isSchluesselOrange() {
+		return SchluesselOrange;
+	}
+
+	public static void setSchluesselOrange(boolean schluesselOrange) {
+		SchluesselOrange = schluesselOrange;
+	}
+
+	public static boolean isSchluesselPink() {
+		return SchluesselPink;
+	}
+
+	public static void setSchluesselPink(boolean schluesselPink) {
+		SchluesselPink = schluesselPink;
+	}
+
+	public static boolean isSchluesselSilber() {
+		return SchluesselSilber;
+	}
+
+	public static void setSchluesselSilber(boolean schluesselSilber) {
+		SchluesselSilber = schluesselSilber;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getMaxFallingSpeed()
+	 */
+	@Override
+	public int getMaxFallingSpeed() {
+		return maxFallingSpeed;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setMaxFallingSpeed(int)
+	 */
+	@Override
+	public void setMaxFallingSpeed(int maxFallingSpeed) {
+		this.maxFallingSpeed = maxFallingSpeed;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#isFalling()
+	 */
+	@Override
+	public boolean isFalling() {
+		return falling;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setFalling(boolean)
+	 */
+	@Override
+	public void setFalling(boolean falling) {
+		this.falling = falling;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#isInit()
+	 */
+	@Override
+	public boolean isInit() {
+		return init;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setInit(boolean)
+	 */
+	@Override
+	public void setInit(boolean init) {
+		this.init = init;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#isBoden()
+	 */
+	@Override
+	public boolean isBoden() {
+		return boden;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setBoden(boolean)
+	 */
+	@Override
+	public void setBoden(boolean boden) {
+		this.boden = boden;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getW()
+	 */
+	@Override
+	public Sound getW() {
+		return w;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setW(com.nero.helper.Sound)
+	 */
+	@Override
+	public void setW(Sound w) {
+		this.w = w;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getS()
+	 */
+	@Override
+	public Sound getS() {
+		return s;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setS(com.nero.helper.Sound)
+	 */
+	@Override
+	public void setS(Sound s) {
+		this.s = s;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getFallingSpeed()
+	 */
+	@Override
+	public int getFallingSpeed() {
+		return fallingSpeed;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setFallingSpeed(int)
+	 */
+	@Override
+	public void setFallingSpeed(int fallingSpeed) {
+		this.fallingSpeed = fallingSpeed;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#isNachRechtsGucken()
+	 */
+	@Override
+	public boolean isNachRechtsGucken() {
+		return nachRechtsGucken;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#setNachRechtsGucken(boolean)
+	 */
+	@Override
+	public void setNachRechtsGucken(boolean nachRechtsGucken) {
+		this.nachRechtsGucken = nachRechtsGucken;
+	}
+
+	public static int getPlayerwidth() {
+		return playerWidth;
+	}
+
+	public static int getPlayerheight() {
+		return playerHeight;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.nero.src.objects.PlayerI#getGravity()
+	 */
+	@Override
+	public int getGravity() {
+		return gravity;
+	}
+
+	public static String getImagepathstehen() {
+		return imagePathStehen;
+	}
+
+	public static String getFallenlinksbild() {
+		return fallenLinksBild;
+	}
+
+	public static String getStehenlinksbild() {
+		return stehenLinksBild;
+	}
+
+	public static String getLaufenrechtsbild() {
+		return laufenRechtsBild;
+	}
+
+	public static String getFallenrechtsbild() {
+		return fallenRechtsBild;
+	}
+
+	public static String getStehenrechtsbild() {
+		return stehenRechtsBild;
+	}
+
+	public static String getLaufenlinksbild() {
+		return laufenLinksBild;
 	}
 
 }

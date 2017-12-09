@@ -18,12 +18,12 @@ public class Menue extends JPanel implements Runnable {
 	 */
 	private static final long serialVersionUID = 1L;
 	// Wo ist der Button auf der X-achse?
-	public int ButtonX = 50;
+	public final static int ButtonX = 50;
 
 	// So ne lustige Formel um die Breite und HICHWAREINUMLAUThe der Buttons
 	// festzulegen
-	public int widthButtons = Window.windowWidth - 2 * ButtonX;
-	public int heightButtons = Window.windowHeight * 1 / 5 - 20;
+	public final static int widthButtons = Window.windowWidth - 2 * ButtonX;
+	public final static int heightButtons = Window.windowHeight * 1 / 5 - 20;
 
 	// Y-Koordinate fuer alle BlICHWAREINUMLAUTcke.. auch wieder mit Formel
 	public int exitButtonY = Window.windowHeight - heightButtons - 50;
@@ -33,10 +33,8 @@ public class Menue extends JPanel implements Runnable {
 	public int startButtonY = optionsButtonY - heightButtons - 10;
 	private String musicPath = "/Sound/backgroundmusic.wav";
 
-	// Run Thread, RUN!!
 	public boolean running;
 
-	// Alle Buttons, ohoooo..
 
 	JButton btstart;
 	JButton btoptions;
@@ -52,7 +50,6 @@ public class Menue extends JPanel implements Runnable {
 		this.g = g;
 		s = new Sound(musicPath);
 
-		// Hier werden sie auch wieder eingefuegt
 		btstart = new JButton("Start");
 		bthighscore = new JButton("Highscore");
 		btlevelcreator = new JButton("Levelersteller");
@@ -69,9 +66,7 @@ public class Menue extends JPanel implements Runnable {
 
 		add(btexit);
 
-		// System.out.println(ButtonX);
 
-		// Und hier bekommen sie auch tatsaechlich einen Nutzen
 		btstart.addActionListener(new ActionListener() {
 
 			@Override
@@ -121,33 +116,18 @@ public class Menue extends JPanel implements Runnable {
 			}
 		});
 
-		// Start!
 		start();
 
 	}
 
-	// Seltsam.. ich dachte das hatte frueher mal einen Sinn.. naja..
-	public void createMenue() {
 
-	}
 
-	// ZerstICHWAREINUMLAUTre das Menue.. auch noch nicht benutzt.. doof
-
-	public void removeMenue() {
-
-		remove(btstart);
-		remove(btexit);
-		remove(bthighscore);
-		remove(btlevelcreator);
-		remove(btoptions);
-
-	}
 
 	// Hier sind die Methoden zu den ActionListenern
 
 	private void btStartActionPerformed(ActionEvent evt) {
 
-		CardLayoutManager.cardLayout.show(CardLayoutManager.getCardContainer(), CardLayoutManager.GAME);
+		CardLayoutManager.cardLayout.show(CardLayoutManager.getCardContainer(), CardLayoutManagerI.GAME);
 		g.addKeyListener();
 		g.j.setState(Frame.ICONIFIED);
 		g.j.setState(Frame.NORMAL);
@@ -173,11 +153,6 @@ public class Menue extends JPanel implements Runnable {
 
 	}
 
-	/*
-	 * Start the thread.. seltsam.. threat heisst Bedrohung.. das D ist sanft...
-	 * sanfte Bedrohung?
-	 */
-
 	public void start() {
 
 		new Thread(this).start();
@@ -185,7 +160,6 @@ public class Menue extends JPanel implements Runnable {
 
 	}
 
-	// HALT STOP, jetzt macht der Thread mal pause, wenn ich aufgerufen werde
 
 	public void stop() {
 
@@ -193,7 +167,6 @@ public class Menue extends JPanel implements Runnable {
 
 	}
 
-	// Hajoo.. auch ich muss mal rennen
 	@Override
 	public void run() {
 
@@ -217,7 +190,6 @@ public class Menue extends JPanel implements Runnable {
 				btstart.setLocation(ButtonX, startButtonY);
 
 				Thread.sleep(10);
-				// Exceptionball! Catch a Exception
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

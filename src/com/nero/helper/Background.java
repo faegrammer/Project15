@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import com.nero.src.input.EnviromentallyMovedPaintable;
 
-public class Background extends EnviromentallyMovedPaintable {
+public class Background extends EnviromentallyMovedPaintable implements BackgroundI {
 	private static final String backgroundImagePath = "/images/Cave.jpg";
 
 	public Background(int x, int y, int width, int height, String imagePath) {

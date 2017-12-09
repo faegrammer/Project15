@@ -15,8 +15,11 @@ import com.nero.helper.ScrollerUp;
 import com.nero.src.objects.Block;
 import com.nero.src.objects.Coin;
 import com.nero.src.objects.Ghostly;
+import com.nero.src.objects.InteractsWithPlayer;
 import com.nero.src.objects.Player;
+import com.nero.src.objects.PlayerI;
 import com.nero.src.objects.doors.DoorBlau;
+import com.nero.src.objects.doors.DoorFather;
 import com.nero.src.objects.doors.DoorGelb;
 import com.nero.src.objects.doors.DoorGruen;
 import com.nero.src.objects.doors.DoorOrange;
@@ -32,16 +35,11 @@ import com.nero.src.objects.doors.keys.KeySilber;
 public class Controller {
 
 	// Hier kommen die Listen..
-	public static LinkedList<Block> b = new LinkedList<Block>();
-	public static LinkedList<Ghostly> e = new LinkedList<Ghostly>();
-	public static LinkedList<Coin> co = new LinkedList<Coin>();
-	public static LinkedList<BouncerToDown> btd = new LinkedList<BouncerToDown>();
-	public static LinkedList<BouncerToUp> btu = new LinkedList<BouncerToUp>();
-	public static LinkedList<BouncerToRight> btr = new LinkedList<BouncerToRight>();
-	public static LinkedList<BouncerToLeft> btl = new LinkedList<BouncerToLeft>();
+	public static LinkedList<InteractsWithPlayer> interact = new LinkedList<InteractsWithPlayer>();
+	
 
 	// Darf ich vorstellen.. der Spieler und desssen Startposition
-	private static Player p;
+	public static Player p;
 
 	public int tempLevel = 1;
 
@@ -79,34 +77,11 @@ public class Controller {
 
 	public Controller() {
 
-		p = new Player(0, 0);
-		ex = new Exit(100, 100);
-		kb = new KeyBlau(-50, -50);
-		kg = new KeyGelb(-50, -50);
-		kgr = new KeyGruen(-50, -50);
-		kor = new KeyOrange(-50, -50);
-		kp = new KeyPink(-50, -50);
-		ks = new KeySilber(-50, -50);
-
-		db = new DoorBlau(-50, -50);
-		dg = new DoorGelb(-50, -50);
-		dgr = new DoorGruen(-50, -50);
-		dor = new DoorOrange(-50, -50);
-		dp = new DoorPink(-50, -50);
-		ds = new DoorSilber(-50, -50);
-
-		// Starte Methode lvlControl
-		// lvlControl();
 
 	}
 
 	public static void closeTheDoors() {
-		db.switchBack();
-		dg.switchBack();
-		dgr.switchBack();
-		dor.switchBack();
-		dp.switchBack();
-		ds.switchBack();
+		DoorFather
 
 	}
 
@@ -148,18 +123,11 @@ public class Controller {
 
 	// Vernichtet alle bisherigen Listenobjekte
 	public static void removeAllExceptNotList() {
-		b.removeAll(b);
-		e.removeAll(e);
-		co.removeAll(co);
-		btd.removeAll(btd);
-		btu.removeAll(btu);
-		btl.removeAll(btl);
-		btr.removeAll(btr);
+	interact.removeAll(interact);
 
 	}
 
-	// Damit kann ich den Spieler ruecksichtslos herumstossen
-	public static Player returnPlayer() {
+	public static PlayerI returnPlayer() {
 
 		return p;
 
@@ -238,27 +206,17 @@ public class Controller {
 	}
 
 	// Update....
-	public void update(LinkedList<Block> b, LinkedList<Ghostly> e, LinkedList<Coin> co, ScrollerDown sd,
-			ScrollerLeft sl, ScrollerRight sr, ScrollerUp su) {
+	public void update(LinkedList<InteractsWithPlayer> interact) {
 		// sd.update();
 		// su.update();
 		// sr.update();
 		// sl.update();
 
-		dg.update();
-		db.update();
-		dgr.update();
-		dor.update();
-		dp.update();
-		ds.update();
-		kb.update();
-		kg.update();
-		kgr.update();
-		kor.update();
-		kp.update();
-		ks.update();
+	for (InteractsWithPlayer interactsWithPlayer : interact) {
+		interactsWithPlayer.update();
+	}
 
-		p.update(b, e, Controller.co, ex, su, sr, sd, sl, dg, db, dgr, dor, dp, ds, kb, kg, kgr, kor, kp, ks);
+		p.update(interact);
 		ex.update();
 
 		/*

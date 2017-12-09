@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 
@@ -16,7 +17,10 @@ public abstract class DoorFather extends EnviromentallyMovedPaintable implements
 	public static final int doorWidth = 50;
 	public static final int doorHeight = 50;
 	public final Identitaeten identity;
-	private final String imageOpen, imageClosed;
+	private static String imageOpen;
+	private static String imageClosed;
+	private boolean closed;
+	private static LinkedList<DoorFather> listOfDoors = new LinkedList<DoorFather>();
 
 	public DoorFather(Point p, int width, int height,Identitaeten identity, String imagePathClosed, String imagePathOpen) {
 		this(p.x, p.y, width, height,identity, imagePathClosed, imagePathOpen);
@@ -33,20 +37,28 @@ public abstract class DoorFather extends EnviromentallyMovedPaintable implements
 
 	public DoorFather(int x, int y, int width, int height,Identitaeten identity, String imagePathClosed, String imagePathOpen) {
 		super(x, y, width, height, imagePathClosed);
-		this.imageClosed = imagePathClosed;
-		this.imageOpen = imagePathOpen;
-		this.identity = identity; 
+		imageClosed = imagePathClosed;
+		imageOpen = imagePathOpen;
+		this.identity = identity;
+		DoorFather.listOfDoors.add(this);
+		closed = true;
+	}
+	
+	public static void resetAllDoors() {
+		for (DoorFather doorFather : listOfDoors) {
+			doorFather.switchToClosed();
+		}
 	}
 
-	public void switchPictures() {
-
-		imagePath = this.imageOpen;
-
+	public void switchToOpen() {
+		
+		imagePath = imageOpen;
+		closed = false;
 	}
 
-	public void switchBack() {
-		imagePath = this.imageClosed;
-
+	public void switchToClosed() {
+		imagePath = imageClosed;
+		closed = true;
 	}
 
 	public Rectangle getDoorBoundsOben() {

@@ -5,11 +5,10 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class CardLayoutManager {
+public class CardLayoutManager implements CardLayoutManagerI {
 
 	public static CardLayout cardLayout;
 	private static JPanel cardContainer;
-	public static final String GAME = "game";
 	static final String MENUE = "menue";
 	Game g;
 
@@ -32,6 +31,10 @@ public class CardLayoutManager {
 		CardLayoutManager.cardContainer = cardContainer;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.nero.src.CardLayoutManagerI#returnGame()
+	 */
+	@Override
 	public Game returnGame() {
 
 		return this.g;

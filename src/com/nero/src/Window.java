@@ -13,7 +13,7 @@ public class Window extends JFrame {
 
 	// Name der Panele
 
-	CardLayoutManager clm;
+	CardLayoutManagerI clm;
 
 	// Na wie ist das Menue
 	public static boolean menue = true;

@@ -4,16 +4,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import com.nero.src.Game;
-import com.nero.src.objects.Player;
+import com.nero.src.objects.PlayerI;
 
 public class KeyboardInput extends KeyAdapter {
 
-	Player p;
+	PlayerI p;
 	Game g;
 
 	// Das der KeyInput ueberhaupt funktioniert
 
-	public KeyboardInput(Player p, Game g) {
+	public KeyboardInput(PlayerI p, Game g) {
 
 		this.p = p;
 		this.g = g;

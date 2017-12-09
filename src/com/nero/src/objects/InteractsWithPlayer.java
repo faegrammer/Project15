@@ -1,6 +1,8 @@
 package com.nero.src.objects;
 
-public interface InteractsWithPlayer {
+import com.nero.src.Inworldobject;
+
+public interface InteractsWithPlayer extends Inworldobject {
 
 	public void interact();
 
