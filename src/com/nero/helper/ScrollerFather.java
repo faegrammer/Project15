@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import com.nero.src.input.EnviromentallyMoved;
 import com.nero.src.input.GlobalPosition;
 
 public class ScrollerFather extends GlobalPosition {

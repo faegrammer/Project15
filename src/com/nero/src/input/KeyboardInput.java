@@ -19,6 +19,7 @@ public class KeyboardInput extends KeyAdapter {
 		this.g = g;
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 
 		p.keyPressed(e);
@@ -26,12 +27,14 @@ public class KeyboardInput extends KeyAdapter {
 
 	}
 
+	@Override
 	public void keyReleased(KeyEvent e) {
 
 		p.keyReleased(e);
 
 	}
 
+	@Override
 	public void keyTyped(KeyEvent e) {
 
 		p.keyTyped(e);

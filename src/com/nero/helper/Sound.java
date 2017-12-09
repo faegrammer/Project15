@@ -35,6 +35,7 @@ public class Sound {
 		try{
 			new Thread(){
 		
+				@Override
 				public void run(){
 				if(Game.soundOn){	
 					clip.loop();}

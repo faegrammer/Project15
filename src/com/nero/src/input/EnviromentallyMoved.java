@@ -22,6 +22,7 @@ public abstract class EnviromentallyMoved extends GlobalPosition implements Inwo
 	public static int environmentVelX;
 	public static int environmentVelY;
 
+	@Override
 	public void update() {
 
 		pos.x += environmentVelX;

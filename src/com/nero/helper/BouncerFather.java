@@ -2,8 +2,6 @@ package com.nero.helper;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-
 import com.nero.src.input.EnviromentallyMoved;
 
 //Erklaerung Bouncer: Objekt um Gegner leicht einen Bewegungsbefehl zu geben

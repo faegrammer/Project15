@@ -1,6 +1,7 @@
 package com.nero.src;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 public class Window extends JFrame {
 
@@ -32,7 +33,7 @@ public class Window extends JFrame {
 
 		// "TICHWAREINUMLAUTtet" den Prozess bei klick auf weisses X
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		// Kann man das Fenster nachtraeglich veraendern, nICHWAREINUMLAUT!
 

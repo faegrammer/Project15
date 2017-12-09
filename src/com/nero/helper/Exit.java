@@ -1,12 +1,5 @@
 package com.nero.helper;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-
-import javax.swing.ImageIcon;
-
-import com.nero.src.input.EnviromentallyMoved;
 import com.nero.src.input.EnviromentallyMovedPaintable;
 
 //Ja auch der Ausgang braucht ein Objekt, der Globalposition ausgibt

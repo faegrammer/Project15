@@ -1,13 +1,9 @@
 package com.nero.src.objects;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
-
-import javax.swing.ImageIcon;
 
 import com.nero.helper.Exit;
 import com.nero.helper.ScrollerDown;
@@ -151,7 +147,7 @@ public class Player extends MoveablePaintable {
 
 		for (int i = 0; i < co.size(); i++) {
 
-			if (getBounds().intersects(co.get(i).getCoinBounds())) {
+			if (getBounds().intersects(co.get(i).getBounds())) {
 
 				Controller.removeCoin(co.get(i));
 				i = co.size();
@@ -548,6 +544,7 @@ public class Player extends MoveablePaintable {
 	}
 
 	// Kollissionsviereck
+	@Override
 	public Rectangle getBounds() {
 
 		return new Rectangle(pos.x, pos.y, playerWidth, playerHeight + 1);

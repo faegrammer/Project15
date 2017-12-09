@@ -187,6 +187,7 @@ initGame();
 	 * Hier ist das Herzstueck des zeichnens.. hier wird alles zusammen auf das
 	 * Fenster geklatscht!
 	 */
+	@Override
 	public void paint(Graphics g) {
 		/*
 		 * Das ist so super was du da reingeschrieben hast.. das schicke ich
@@ -259,6 +260,7 @@ initGame();
 
 	// Ich bin die wichtigste Methode
 
+	@Override
 	public void run() {
 
 		// Waehrend running true ist mache ich das alles:

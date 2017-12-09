@@ -1,5 +1,6 @@
 package com.nero.src;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -75,6 +76,7 @@ public class Menue extends JPanel implements Runnable {
 		// Und hier bekommen sie auch tatsaechlich einen Nutzen
 		btstart.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				btStartActionPerformed(e);
 
@@ -83,6 +85,7 @@ public class Menue extends JPanel implements Runnable {
 
 		bthighscore.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				btHighscoreActionPerformed(e);
@@ -92,6 +95,7 @@ public class Menue extends JPanel implements Runnable {
 
 		btoptions.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				btOptionsActionPerformed(e);
@@ -101,6 +105,7 @@ public class Menue extends JPanel implements Runnable {
 
 		btlevelcreator.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				btLevelcreatorActionPerformed(e);
@@ -110,6 +115,7 @@ public class Menue extends JPanel implements Runnable {
 
 		btexit.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				btExitActionPerformed(e);
@@ -146,8 +152,8 @@ public class Menue extends JPanel implements Runnable {
 		
 	CardLayoutManager.cardLayout.show(CardLayoutManager.getCardContainer(),CardLayoutManager.GAME);
     g.addKeyListener();
-    g.j.setState(JFrame.ICONIFIED);
-    g.j.setState(JFrame.NORMAL);
+    g.j.setState(Frame.ICONIFIED);
+    g.j.setState(Frame.NORMAL);
     s.playMusic();
 	
 	}
@@ -191,6 +197,7 @@ public class Menue extends JPanel implements Runnable {
 	}
 
 //Hajoo.. auch ich muss mal rennen	
+	@Override
 	public void run() {
 
 		while (running) {

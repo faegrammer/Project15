@@ -1,19 +1,10 @@
 package com.nero.src.objects;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
 import java.util.LinkedList;
-import java.util.Random;
-
-import javax.swing.ImageIcon;
-
 import com.nero.helper.BouncerToDown;
 import com.nero.helper.BouncerToLeft;
 import com.nero.helper.BouncerToRight;
 import com.nero.helper.BouncerToUp;
-import com.nero.src.Inworldobject;
-import com.nero.src.Visible;
 import com.nero.src.input.Antagonist;
 
 public class Ghostly extends MoveablePaintable implements Antagonist {
