@@ -8,4 +8,8 @@ public interface EnviromentallyMovedI extends GlobalPositionI {
 
 	Rectangle getBounds();
 
+	int getVelX();
+
+	int getVelY();
+
 }

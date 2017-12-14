@@ -18,13 +18,11 @@ public class KeyFather extends EnviromentallyMovedPaintable implements Collectab
 	protected static final int keyHeight = 50;
 	public boolean visible;
 	private static LinkedList<Identitaeten> idenitaet = new LinkedList<Identitaeten>();
-	
 
-	public KeyFather(int x, int y,Identitaeten keyIdent, String imagePath) {
+	public KeyFather(int x, int y, Identitaeten keyIdent, String imagePath) {
 
 		super(x, y, keyWidth, keyHeight, imagePath);
 		this.keyIdent = keyIdent;
-		
 
 	}
 
@@ -38,10 +36,10 @@ public class KeyFather extends EnviromentallyMovedPaintable implements Collectab
 
 		this.visible = false;
 	}
-	
+
 	public static boolean contains(Identitaeten id) {
 		for (Identitaeten identitaeten : idenitaet) {
-			if(identitaeten == id) {
+			if (identitaeten == id) {
 				return true;
 			}
 		}

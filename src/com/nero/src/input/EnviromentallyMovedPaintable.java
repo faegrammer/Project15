@@ -19,7 +19,9 @@ public class EnviromentallyMovedPaintable extends EnviromentallyMoved implements
 		this(p.x, p.y, width, height, imagePath);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.input.EnviromentallyMovedPaintableI#getImage()
 	 */
 	@Override
@@ -31,8 +33,11 @@ public class EnviromentallyMovedPaintable extends EnviromentallyMoved implements
 	}
 
 	// Methode um Gegner zu malen
-	/* (non-Javadoc)
-	 * @see com.nero.src.input.EnviromentallyMovedPaintableI#paint(java.awt.Graphics2D)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.nero.src.input.EnviromentallyMovedPaintableI#paint(java.awt.Graphics2D)
 	 */
 	@Override
 	public void paint(Graphics2D g2d) {

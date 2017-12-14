@@ -2,6 +2,8 @@ package com.nero.helper;
 
 import java.awt.Color;
 
+import com.nero.src.input.Controller;
+
 public class ScrollerRight extends ScrollerFather {
 
 	public ScrollerRight(int x, int y, boolean visible, int width, int height) {
@@ -10,9 +12,10 @@ public class ScrollerRight extends ScrollerFather {
 	}
 
 	@Override
-	public void interact() {
-		// TODO Auto-generated method stub
-		
+	public void update() {
+		if (isIntersected()) {
+			Controller.getInstance().moveAllNPO(Controller.getPlayer().getAbsMaxXSpeed(), 0);
+		}
 	}
 
 }

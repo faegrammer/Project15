@@ -93,7 +93,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this(p.x, p.y);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#update(java.util.LinkedList)
 	 */
 	@Override
@@ -105,8 +107,6 @@ public class Player extends MoveablePaintable implements PlayerI {
 		pos.y += fallingSpeed;
 		pos.y -= sprungkraft;
 
-
-	
 		// Falle ich?
 		if (falling) {
 
@@ -136,7 +136,6 @@ public class Player extends MoveablePaintable implements PlayerI {
 		}
 
 	}
-
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -211,7 +210,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#keyTyped(java.awt.event.KeyEvent)
 	 */
 	@Override
@@ -223,7 +224,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#keyReleased(java.awt.event.KeyEvent)
 	 */
 	@Override
@@ -267,7 +270,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 	}
 
 	// Kollissionsviereck
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getBounds()
 	 */
 	@Override
@@ -278,7 +283,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 
 	// Hol das bild her!
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#returnPlayerX()
 	 */
 	@Override
@@ -287,7 +294,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return pos.x;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#returnPlayerY()
 	 */
 	@Override
@@ -297,7 +306,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#deleteInventory()
 	 */
 	@Override
@@ -310,7 +321,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		SchluesselSilber = false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getBewegungsgeschwindigkeit()
 	 */
 	@Override
@@ -318,7 +331,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return bewegungsgeschwindigkeit;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setBewegungsgeschwindigkeit(int)
 	 */
 	@Override
@@ -326,7 +341,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.bewegungsgeschwindigkeit = bewegungsgeschwindigkeit;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getSprungkraft()
 	 */
 	@Override
@@ -334,7 +351,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return sprungkraft;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setSprungkraft(int)
 	 */
 	@Override
@@ -342,7 +361,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.sprungkraft = sprungkraft;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getSprunkonstante()
 	 */
 	@Override
@@ -350,7 +371,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return sprunkonstante;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setSprunkonstante(int)
 	 */
 	@Override
@@ -358,7 +381,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.sprunkonstante = sprunkonstante;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getSpringer()
 	 */
 	@Override
@@ -366,7 +391,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return springer;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setSpringer(int)
 	 */
 	@Override
@@ -374,7 +401,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.springer = springer;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#isAllowSpace()
 	 */
 	@Override
@@ -382,7 +411,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return allowSpace;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setAllowSpace(boolean)
 	 */
 	@Override
@@ -454,7 +485,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		SchluesselSilber = schluesselSilber;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getMaxFallingSpeed()
 	 */
 	@Override
@@ -462,7 +495,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return maxFallingSpeed;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setMaxFallingSpeed(int)
 	 */
 	@Override
@@ -470,7 +505,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.maxFallingSpeed = maxFallingSpeed;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#isFalling()
 	 */
 	@Override
@@ -478,7 +515,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return falling;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setFalling(boolean)
 	 */
 	@Override
@@ -486,7 +525,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.falling = falling;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#isInit()
 	 */
 	@Override
@@ -494,7 +535,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return init;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setInit(boolean)
 	 */
 	@Override
@@ -502,7 +545,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.init = init;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#isBoden()
 	 */
 	@Override
@@ -510,7 +555,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return boden;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setBoden(boolean)
 	 */
 	@Override
@@ -518,7 +565,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.boden = boden;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getW()
 	 */
 	@Override
@@ -526,7 +575,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return w;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setW(com.nero.helper.Sound)
 	 */
 	@Override
@@ -534,7 +585,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.w = w;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getS()
 	 */
 	@Override
@@ -542,7 +595,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return s;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setS(com.nero.helper.Sound)
 	 */
 	@Override
@@ -550,7 +605,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.s = s;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getFallingSpeed()
 	 */
 	@Override
@@ -558,7 +615,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return fallingSpeed;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setFallingSpeed(int)
 	 */
 	@Override
@@ -566,7 +625,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		this.fallingSpeed = fallingSpeed;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#isNachRechtsGucken()
 	 */
 	@Override
@@ -574,7 +635,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return nachRechtsGucken;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#setNachRechtsGucken(boolean)
 	 */
 	@Override
@@ -590,7 +653,9 @@ public class Player extends MoveablePaintable implements PlayerI {
 		return playerHeight;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.objects.PlayerI#getGravity()
 	 */
 	@Override

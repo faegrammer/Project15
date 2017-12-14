@@ -19,7 +19,9 @@ public abstract class EnviromentallyMoved extends GlobalPosition implements Inwo
 	public static int environmentVelX;
 	public static int environmentVelY;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.input.EnviromentallyMovedI#update()
 	 */
 	@Override
@@ -46,13 +48,5 @@ public abstract class EnviromentallyMoved extends GlobalPosition implements Inwo
 		EnviromentallyMoved.environmentVelY = environmentVelY;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.nero.src.input.EnviromentallyMovedI#getBounds()
-	 */
-	@Override
-	public Rectangle getBounds() {
-
-		return new Rectangle(pos.x, pos.y, width, height);
-	}
 
 }

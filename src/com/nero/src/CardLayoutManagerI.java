@@ -4,6 +4,6 @@ public interface CardLayoutManagerI {
 
 	String GAME = "game";
 
-	Game returnGame();
+	GameI returnGame();
 
 }

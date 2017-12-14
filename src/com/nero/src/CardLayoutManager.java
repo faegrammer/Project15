@@ -31,11 +31,13 @@ public class CardLayoutManager implements CardLayoutManagerI {
 		CardLayoutManager.cardContainer = cardContainer;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.CardLayoutManagerI#returnGame()
 	 */
 	@Override
-	public Game returnGame() {
+	public GameI returnGame() {
 
 		return this.g;
 	}

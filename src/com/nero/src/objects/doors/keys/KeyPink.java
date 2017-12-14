@@ -6,7 +6,7 @@ public class KeyPink extends KeyFather {
 
 	public KeyPink(int x, int y) {
 
-		super(x, y,Identitaeten.pink, "/images/obstacles/Doors/Keys/Schluessel_pink.png");
+		super(x, y, Identitaeten.pink, "/images/obstacles/Doors/Keys/Schluessel_pink.png");
 
 	}
 

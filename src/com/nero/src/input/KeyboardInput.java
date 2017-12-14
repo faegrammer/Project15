@@ -3,17 +3,17 @@ package com.nero.src.input;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import com.nero.src.Game;
+import com.nero.src.GameI;
 import com.nero.src.objects.PlayerI;
 
 public class KeyboardInput extends KeyAdapter {
 
 	PlayerI p;
-	Game g;
+	GameI g;
 
 	// Das der KeyInput ueberhaupt funktioniert
 
-	public KeyboardInput(PlayerI p, Game g) {
+	public KeyboardInput(PlayerI p, GameI g) {
 
 		this.p = p;
 		this.g = g;

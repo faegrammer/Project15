@@ -4,6 +4,7 @@ import com.nero.src.input.EnviromentallyMovedPaintableI;
 
 public interface MoveablePaintableI extends EnviromentallyMovedPaintableI {
 
+	@Override
 	void update();
 
 }

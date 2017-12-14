@@ -3,8 +3,6 @@ package com.nero.helper;
 import java.awt.Color;
 
 import com.nero.src.input.Controller;
-import com.nero.src.input.EnviromentallyMoved;
-import com.nero.src.objects.Player;
 
 public class ScrollerDown extends ScrollerFather {
 
@@ -14,12 +12,11 @@ public class ScrollerDown extends ScrollerFather {
 	}
 
 	@Override
-	public void interact() {
-		
-		
-		EnviromentallyMoved.environmentVelY = -Controller.p.getFallingSpeed();
-		
-		
+	public void update() {
+		if (isIntersected()) {
+			Controller.getInstance().moveAllNPO(0, Controller.getPlayer().getAbsMaxYSpeed());
+		}
+
 	}
 
 }

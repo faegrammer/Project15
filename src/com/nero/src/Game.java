@@ -26,7 +26,7 @@ import com.nero.src.objects.Ghostly;
 import com.nero.src.objects.Player;
 import com.nero.src.objects.PlayerI;
 
-public class Game extends JPanel implements Runnable {
+public class Game extends JPanel implements Runnable, GameI {
 
 	/**
 	 * 
@@ -37,7 +37,6 @@ public class Game extends JPanel implements Runnable {
 
 	public static boolean gameover = false;
 
-	
 	ScrollerRight sr;
 	ScrollerDown sd;
 	ScrollerUp su;
@@ -101,9 +100,14 @@ public class Game extends JPanel implements Runnable {
 	}
 
 	// Und hier ist die Methode dazu:
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#initGame()
+	 */
+	@Override
 	public void initGame() {
 
-	
 		if (!gameover) {
 			back = new Background();
 
@@ -132,8 +136,13 @@ public class Game extends JPanel implements Runnable {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#update()
+	 */
+	@Override
 	public void update() {
-
 
 		if (gameover) {
 
@@ -143,6 +152,12 @@ public class Game extends JPanel implements Runnable {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#addKeyListener()
+	 */
+	@Override
 	public void addKeyListener() {
 
 		addKeyListener(new KeyboardInput(Controller.returnPlayer(), this));
@@ -151,7 +166,11 @@ public class Game extends JPanel implements Runnable {
 
 	}
 
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#paint(java.awt.Graphics)
+	 */
 	@Override
 	public void paint(Graphics g) {
 
@@ -197,6 +216,12 @@ public class Game extends JPanel implements Runnable {
 
 	// Hallo, ich bin start()!!
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#start()
+	 */
+	@Override
 	public void start() {
 
 		// Ich erstelle einen neuen Thread
@@ -211,6 +236,12 @@ public class Game extends JPanel implements Runnable {
 
 	// Ich bin stop()
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#stop()
+	 */
+	@Override
 	public void stop() {
 
 		// Und setze Running wieder auf false, bei aufruf
@@ -221,6 +252,11 @@ public class Game extends JPanel implements Runnable {
 
 	// Ich bin die wichtigste Methode
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#run()
+	 */
 	@Override
 	public void run() {
 
@@ -265,6 +301,12 @@ public class Game extends JPanel implements Runnable {
 	}
 
 	// Die Funktion, dass die Eingabe ueberhaupt funktioniert
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#keyPressed(java.awt.event.KeyEvent)
+	 */
+	@Override
 	public void keyPressed(KeyEvent e) {
 
 		// Krieg doch endlich den Code des Keys her
@@ -276,47 +318,95 @@ public class Game extends JPanel implements Runnable {
 
 	}
 
-	public Game returnGame() {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnGame()
+	 */
+	@Override
+	public GameI returnGame() {
 
 		return this;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnBoxImage()
+	 */
+	@Override
 	public Image returnBoxImage() {
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePathBox));
 		return i.getImage();
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnBlueImage()
+	 */
+	@Override
 	public Image returnBlueImage() {
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePathBlueKey));
 		return i.getImage();
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnYellowImage()
+	 */
+	@Override
 	public Image returnYellowImage() {
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePathYellowKey));
 		return i.getImage();
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnGreenImage()
+	 */
+	@Override
 	public Image returnGreenImage() {
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePathGreenKey));
 		return i.getImage();
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnPinkImage()
+	 */
+	@Override
 	public Image returnPinkImage() {
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePathPinkKey));
 		return i.getImage();
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnSilverImage()
+	 */
+	@Override
 	public Image returnSilverImage() {
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePathSilverKey));
 		return i.getImage();
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.nero.src.GameI#returnOrangeImage()
+	 */
+	@Override
 	public Image returnOrangeImage() {
 		ImageIcon i = new ImageIcon(getClass().getResource(imagePathOrangeKey));
 		return i.getImage();

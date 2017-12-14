@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import com.nero.src.input.GlobalPosition;
 import com.nero.src.objects.InteractsWithPlayer;
 
-public abstract class ScrollerFather extends GlobalPosition  implements InteractsWithPlayer {
+public abstract class ScrollerFather extends GlobalPosition implements InteractsWithPlayer {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;
@@ -19,6 +19,7 @@ public abstract class ScrollerFather extends GlobalPosition  implements Interact
 
 		// Leitet die x und y Koordinate an Global Position weiter
 		super(x, y, width, height);
+
 		// Steuert das Attribut "visible"
 		this.visible = visible;
 		// Steuert das Attribut "color"
@@ -38,9 +39,10 @@ public abstract class ScrollerFather extends GlobalPosition  implements Interact
 	}
 
 	// Erschafft das Kollissionsviereck
+	@Override
 	public Rectangle getBounds() {
 
-		return new Rectangle(pos.x, pos.y, width, height);
+		return new Rectangle(pos.x, pos.x, getWidth(), getHeight());
 
 	}
 

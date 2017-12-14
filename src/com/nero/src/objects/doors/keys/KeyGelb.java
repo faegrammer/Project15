@@ -6,7 +6,7 @@ public class KeyGelb extends KeyFather {
 
 	public KeyGelb(int x, int y) {
 
-		super(x, y,Identitaeten.gelb, "/images/obstacles/Doors/Keys/Schluessel_gelb.png");
+		super(x, y, Identitaeten.gelb, "/images/obstacles/Doors/Keys/Schluessel_gelb.png");
 
 	}
 

@@ -19,7 +19,9 @@ public abstract class GlobalPosition implements GlobalPositionI {
 		this.height = height;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.input.GlobalPositionI#getPos()
 	 */
 	@Override
@@ -27,7 +29,19 @@ public abstract class GlobalPosition implements GlobalPositionI {
 		return pos;
 	}
 
-	/* (non-Javadoc)
+	@Override
+	public int getWidth() {
+		return this.width;
+	}
+
+	@Override
+	public int getHeight() {
+		return this.height;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.input.GlobalPositionI#setPos(java.awt.Point)
 	 */
 	@Override
@@ -35,11 +49,23 @@ public abstract class GlobalPosition implements GlobalPositionI {
 		this.pos = pos;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.nero.src.input.GlobalPositionI#setPos(int, int)
 	 */
 	@Override
 	public void setPos(int x, int y) {
 		this.pos = new Point(x, y);
+	}
+
+	@Override
+	public void move(Point vektor) {
+		move(vektor.x, vektor.y);
+	}
+
+	@Override
+	public void move(int x, int y) {
+		setPos(getPos().x + x, getPos().y + y);
 	}
 }

@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import javax.swing.JPanel;
 
 import com.nero.helper.Sound;
@@ -34,7 +32,6 @@ public class Menue extends JPanel implements Runnable {
 	private String musicPath = "/Sound/backgroundmusic.wav";
 
 	public boolean running;
-
 
 	JButton btstart;
 	JButton btoptions;
@@ -65,7 +62,6 @@ public class Menue extends JPanel implements Runnable {
 		add(btoptions);
 
 		add(btexit);
-
 
 		btstart.addActionListener(new ActionListener() {
 
@@ -120,9 +116,6 @@ public class Menue extends JPanel implements Runnable {
 
 	}
 
-
-
-
 	// Hier sind die Methoden zu den ActionListenern
 
 	private void btStartActionPerformed(ActionEvent evt) {
@@ -159,7 +152,6 @@ public class Menue extends JPanel implements Runnable {
 		running = true;
 
 	}
-
 
 	public void stop() {
 
