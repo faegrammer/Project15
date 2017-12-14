@@ -2,9 +2,9 @@ package com.nero.src.objects;
 
 import java.awt.Point;
 
-import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.input.Paintable;
 
-public class Coin extends EnviromentallyMovedPaintable implements Collectable {
+public class Coin extends Paintable implements Collectable {
 
 	private final static int SIZE = 50;
 	private static final String coinImagePath = "/images/obstacles/Muenze.png";

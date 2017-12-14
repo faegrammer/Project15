@@ -4,9 +4,9 @@ import java.awt.Point;
 
 import com.nero.src.Inworldobject;
 import com.nero.src.Visible;
-import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.input.Paintable;
 
-public abstract class MoveablePaintable extends EnviromentallyMovedPaintable
+public abstract class MoveablePaintable extends Paintable
 		implements Visible, Inworldobject, MoveablePaintableI {
 	protected int velX;
 	protected int velY;

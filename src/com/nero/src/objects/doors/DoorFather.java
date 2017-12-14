@@ -2,11 +2,11 @@ package com.nero.src.objects.doors;
 
 import java.awt.Point;
 
-import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.input.Paintable;
 import com.nero.src.objects.InteractsWithPlayer;
 import com.nero.src.objects.doors.keys.KeyFather;
 
-public abstract class DoorFather extends EnviromentallyMovedPaintable implements InteractsWithPlayer {
+public abstract class DoorFather extends Paintable implements InteractsWithPlayer {
 
 	public static final int doorWidth = 50;
 	public static final int doorHeight = 50;

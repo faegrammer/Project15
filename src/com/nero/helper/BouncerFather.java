@@ -2,11 +2,13 @@ package com.nero.helper;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import com.nero.src.input.EnviromentallyMoved;
+
+import com.nero.src.Inworldobject;
+import com.nero.src.input.GlobalPosition;
 
 //Erklaerung Bouncer: Objekt um Gegner leicht einen Bewegungsbefehl zu geben
 
-public class BouncerFather extends EnviromentallyMoved {
+public class BouncerFather extends GlobalPosition implements Inworldobject {
 
 	// Attribut zum steuern der Sichtbarkeit der Bouncer
 	private boolean visible;

@@ -6,16 +6,16 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-public class EnviromentallyMovedPaintable extends EnviromentallyMoved implements EnviromentallyMovedPaintableI {
+public class Paintable extends GlobalPosition{
 	protected String imagePath;
 
-	public EnviromentallyMovedPaintable(int x, int y, int width, int height, String imagePath) {
+	public Paintable(int x, int y, int width, int height, String imagePath) {
 		super(x, y, width, height);
 		this.imagePath = imagePath;
 		// TODO Auto-generated constructor stub
 	}
 
-	public EnviromentallyMovedPaintable(Point p, int width, int height, String imagePath) {
+	public Paintable(Point p, int width, int height, String imagePath) {
 		this(p.x, p.y, width, height, imagePath);
 	}
 

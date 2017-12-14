@@ -2,9 +2,9 @@ package com.nero.helper;
 
 import java.awt.Point;
 
-import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.input.Paintable;
 
-public class Background extends EnviromentallyMovedPaintable implements BackgroundI {
+public class Background extends Paintable implements BackgroundI {
 	private static final String backgroundImagePath = "/images/Cave.jpg";
 
 	public Background(int x, int y, int width, int height, String imagePath) {

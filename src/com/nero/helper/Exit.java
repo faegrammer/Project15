@@ -1,10 +1,10 @@
 package com.nero.helper;
 
-import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.input.Paintable;
 
 //Ja auch der Ausgang braucht ein Objekt, der Globalposition ausgibt
 
-public class Exit extends EnviromentallyMovedPaintable {
+public class Exit extends Paintable {
 
 	// Meh... woher bild du haben?
 

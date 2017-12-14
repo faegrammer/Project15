@@ -8,11 +8,11 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
 import com.nero.src.input.EnviromentallyMoved;
-import com.nero.src.input.EnviromentallyMovedPaintable;
+import com.nero.src.input.Paintable;
 import com.nero.src.objects.Collectable;
 import com.nero.src.objects.doors.Identitaeten;
 
-public class KeyFather extends EnviromentallyMovedPaintable implements Collectable {
+public class KeyFather extends Paintable implements Collectable {
 	public final Identitaeten keyIdent;
 	protected static final int keyWidth = 50;
 	protected static final int keyHeight = 50;
