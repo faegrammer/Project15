@@ -1,10 +1,12 @@
 package com.nero.src.objects;
 
-import com.nero.src.input.EnviromentallyMovedPaintableI;
+import java.awt.Graphics2D;
 
-public interface MoveablePaintableI extends EnviromentallyMovedPaintableI {
+import com.nero.src.Inworldobject;
 
-	@Override
-	void update();
+public interface MoveablePaintableI extends Inworldobject {
+
+	
+	void paint(Graphics2D g2d);
 
 }
