@@ -1,11 +1,15 @@
 package de.dviol.control;
 
+import de.dviol.attributes.GlobalDimension;
+import de.dviol.level.LevelI;
 import de.dviol.model.PlayerI;
 
 public interface ControllerI {
 		
-//	static PlayerI getPlayer() {
-//		return null;
-//	}
-	
+
+	void moveAll(int x, int y);
+	void initGame();
+	void initLevel(LevelI level);
+	void tearDownLevel();
+
 }

@@ -4,32 +4,35 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 public interface GlobalDimensionI {
-	Point getPos();
+	Point getPositionRef();
 
 	default int getRightCorner() {
 		return getLeftCorner() + getWidth();
 	}
 
 	default int getLeftCorner() {
-		return getPos().x;
+		return getPositionRef().x;
 	}
 
 	default int getUpperCorner() {
-		return getPos().y;
+		return getPositionRef().y;
 
 	}
 
 	default int getLowerCorner() {
 		return getUpperCorner() + getHeight();
 	}
+	
+	int x();
+	int y();
 
 	int getWidth();
 
 	int getHeight();
 
-	void setPos(Point pos);
+	void setPosition(Point pos);
 
-	void setPos(int x, int y);
+	void setPosition(int x, int y);
 
 	void move(int x, int y);
 
@@ -44,7 +47,7 @@ public interface GlobalDimensionI {
 	}
 	
 	default Rectangle getBounds() {
-		return new Rectangle(getPos().x,getPos().y,getWidth(),getHeight());
+		return new Rectangle(getPositionRef().x,getPositionRef().y,getWidth(),getHeight());
 	}
 	
 
