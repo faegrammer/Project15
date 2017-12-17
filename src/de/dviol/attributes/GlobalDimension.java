@@ -26,10 +26,12 @@ public abstract class GlobalDimension implements GlobalDimensionI {
 		this.height = height;
 	}
 	
+	@Override
 	public int x() {
 		return position.x;
 	}
 	
+	@Override
 	public int y() {
 		return position.y;
 	}
@@ -70,6 +72,11 @@ public abstract class GlobalDimension implements GlobalDimensionI {
 	@Override
 	public void move(Point vektor) {
 		move(vektor.x,vektor.y);
+	}
+
+	public void update() {
+
+		
 	}
 
 }

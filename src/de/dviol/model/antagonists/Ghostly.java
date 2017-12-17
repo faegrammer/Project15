@@ -11,6 +11,7 @@ public class Ghostly extends AbstractVisibleMovableIngameobject implements Antag
 	public final static int MAXIMUM_VELOCITY = 10;
 	
 	
+	
 	public Ghostly(int x, int y, int width, int height) {
 		super(x, y, width, height,MAXIMUM_VELOCITY,MAXIMUM_VELOCITY,PATH_TO_GHOSTLY);
 		// TODO Auto-generated constructor stub
@@ -21,6 +22,10 @@ public class Ghostly extends AbstractVisibleMovableIngameobject implements Antag
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void update() {
+		
+	}
 
 
 }

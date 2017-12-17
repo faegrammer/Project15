@@ -11,5 +11,5 @@ Jonas Schönian
 www.heavy-elvis.de
 
 ## Artwork
-
+Rosanna Ehrentraut
 

@@ -1,8 +1,6 @@
 package de.dviol.control;
 
-import de.dviol.attributes.GlobalDimension;
 import de.dviol.level.LevelI;
-import de.dviol.model.PlayerI;
 
 public interface ControllerI {
 		
@@ -11,5 +9,6 @@ public interface ControllerI {
 	void initGame();
 	void initLevel(LevelI level);
 	void tearDownLevel();
+	void update();
 
 }
