@@ -1,2 +1,2 @@
 # Project15
-A little sidescroller from the Year 2012
+A little sidescroller of the Year 2012
